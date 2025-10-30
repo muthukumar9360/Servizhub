@@ -82,9 +82,9 @@ const LoginForm = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
       {/* Login Form */}
-      <div className="flex justify-center items-center h-full relative z-10 p-4">
-        <div className="bg-black bg-opacity-50 backdrop-blur-md rounded-2xl p-8 w-full max-w-md text-white shadow-lg border-2 border-white">
-          <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
+      <div className="flex justify-center items-center h-full relative z-10 p-6">
+        <div className="bg-black bg-opacity-50 backdrop-blur-md rounded-2xl p-4 lg:p-8 w-full max-w-md text-white shadow-lg border-2 border-white">
+          <h2 className="text-3xl font-bold text-center mt-5 lg:mt-0 mb-6">Login</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid gap-3">
@@ -99,7 +99,7 @@ const LoginForm = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               <input
                 type="tel"
                 name="phno"

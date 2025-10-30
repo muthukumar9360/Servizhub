@@ -151,9 +151,9 @@ const ForgetForm = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
       {/* Main Form */}
-      <div className="flex justify-center items-center min-h-screen relative z-10 py-10">
-        <div className="bg-black bg-opacity-60 backdrop-blur-md rounded-2xl p-8 w-full max-w-md border-2 border-white shadow-lg space-y-6">
-          <h2 className="text-3xl font-bold text-center mb-2">
+      <div className="flex justify-center items-center min-h-screen relative z-10 py-5 lg:py-10">
+        <div className="bg-black bg-opacity-60 backdrop-blur-md rounded-2xl m-5 lg:p-8 w-full max-w-md border-2 border-white shadow-lg lg:space-y-6">
+          <h2 className="text-3xl font-bold text-center mb-2 mt-5 lg:mt-0">
             Forgot Password
           </h2>
           {/* Status Tracker */}
@@ -162,7 +162,7 @@ const ForgetForm = () => {
           </div>
 
           {/* Step 1: Username, Email, Phone */}
-          <div className="space-y-4">
+          <div className="space-y-4 p-5 lg:p-0">
             <input
               type="text"
               placeholder="Enter Username"
@@ -203,6 +203,35 @@ const ForgetForm = () => {
                   ? "Send OTP"
                   : "Resend OTP"}
             </button>
+
+            {/* Links */}
+            <p className="text-center text-sm mt-6">
+              Registered User?{" "}
+              <a
+                href="/loginsignup/login"
+                className="text-blue-300 hover:underline"
+              >
+                Login
+              </a>
+            </p>
+            <p className="text-center text-sm mt-3">
+              Forget Password?{" "}
+              <a
+                href="/loginsignup/forgot"
+                className="text-blue-300 hover:underline"
+              >
+                Click Here
+              </a>
+            </p>
+            <p className="text-center text-sm mt-3">
+              Home Page?{" "}
+              <a
+                href="/"
+                className="text-blue-300 hover:underline"
+              >
+                Click Here
+              </a>
+            </p>
 
           </div>
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import sampleImg from "./assets/image1.png";
 import bgImg from "./assets/image.png";
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SocialButton = ({ onClick, icon, text }) => (
   <button
     onClick={onClick}
     type="button"
-    className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100 transition duration-200"
+    className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100 transition duration-200 text-sm sm:text-base"
   >
-    <img src={icon} alt={text} className="mr-2" />
+    <img src={icon} alt={text} className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
     {text}
   </button>
 );
@@ -24,19 +24,15 @@ const LoginSignup = () => {
 
   const query = new URLSearchParams(location.search);
 
-    // Helper function to generate Link URL
-    const getLinkWithQuery = (isLoginPage) => {
-      const basePath = isLoginPage ? "/loginsignup/login" : "/loginsignup/signup";
-
-      // Only append query if chat or providerId exists
-      const filteredQuery = new URLSearchParams();
-      if (query.get("chat")) filteredQuery.set("chat", query.get("chat"));
-      if (query.get("providerId")) filteredQuery.set("providerId", query.get("providerId"));
-      if (query.get("offline")) filteredQuery.set("offline", query.get("offline"));
-
-      const queryString = filteredQuery.toString();
-      return queryString ? `${basePath}?${queryString}` : basePath;
-    };
+  const getLinkWithQuery = (isLoginPage) => {
+    const basePath = isLoginPage ? "/loginsignup/login" : "/loginsignup/signup";
+    const filteredQuery = new URLSearchParams();
+    if (query.get("chat")) filteredQuery.set("chat", query.get("chat"));
+    if (query.get("providerId")) filteredQuery.set("providerId", query.get("providerId"));
+    if (query.get("offline")) filteredQuery.set("offline", query.get("offline"));
+    const queryString = filteredQuery.toString();
+    return queryString ? `${basePath}?${queryString}` : basePath;
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -57,7 +53,6 @@ const LoginSignup = () => {
       }
     }
 
-    // Prefill Google Signup data
     const email = params.get("email");
     const googleId = params.get("googleId");
     const firstname = params.get("firstname");
@@ -71,39 +66,44 @@ const LoginSignup = () => {
 
   const handleGoogleClick = (type) => {
     const base = `${api}/auth/google`;
-    window.location.href =
-      type === "signup" ? `${base}/signup` : `${base}/login`;
+    window.location.href = type === "signup" ? `${base}/signup` : `${base}/login`;
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center relative bg-gray-100 bg-cover bg-center" style={{ backgroundImage: `url(${bgImg})` }}>
-      <div
-        className="flex w-[90%] max-w-5xl rounded-lg shadow-lg overflow-hidden border border-gray-200"
-      >
+    <div
+      className="flex flex-col md:flex-row min-h-screen items-center justify-center bg-gray-100 bg-cover bg-center p-4 lg:p-6"
+      style={{ backgroundImage: `url(${bgImg})` }}
+    >
+      <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-lg shadow-lg overflow-hidden border border-gray-200 bg-white/80 backdrop-blur-sm">
+        
         {/* Left Panel */}
-        <div className="w-1/2 bg-[#7B2D43] text-white p-10 hidden md:flex flex-col justify-between">
+        <div className="w-full md:w-1/2 bg-[#7B2D43] text-white pt-1 pb-4 lg:p-10 flex flex-col justify-between items-center md:items-start text-center md:text-left">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Success starts here</h2>
-            <ul className="space-y-2 text-lg">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-1 lg:mb-6">Success starts here</h2>
+            <ul className="lg:space-y-2 text-xs">
               <li>✓ Over 700 categories</li>
               <li>✓ Quality work done faster</li>
               <li>✓ Access to global talent & businesses</li>
             </ul>
           </div>
-          <img src={sampleImg} alt="Work illustration" className="rounded-lg" />
+          <img
+            src={sampleImg}
+            alt="Work illustration"
+            className="rounded-lg mt-3 lg:mt-6 w-full px-4 lg:px-0"
+          />
         </div>
 
         {/* Right Panel */}
-        <div className="w-full md:w-1/2 p-10 bg-white">
-          <h1 className="text-center text-4xl font-bold mb-6 underline">
+        <div className="w-full md:w-1/2 px-6 pt-2.5 pb-2 lg:pt-6 lg:py-6 lg:p-10 bg-white">
+          <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-2 lg:mb-6 underline">
             {isLogin ? "Login Page" : "Signup Page"}
           </h1>
 
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-lg lg:text-2xl font-semibold mb-1 lg:mb-4">
             {isLogin ? "Sign in into your account" : "Create a new account"}
           </h2>
 
-          <p className="text-sm mb-6">
+          <p className="text-sm lg:mb-6 mb-3">
             {isLogin ? (
               <>
                 Don’t have an account?{" "}
@@ -129,15 +129,36 @@ const LoginSignup = () => {
 
           {/* Social Buttons */}
           <div>
-            <div className="space-y-4"> <button type="button" className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100" onClick={() => handleGoogleClick(isLogin ? "login" : "signup")} > <img src="https://img.icons8.com/color/24/google-logo.png" alt="google" className="mr-2" /> Continue with Google </button> </div>
+            <div className="space-y-1 lg:space-y-4">
+              <button
+                type="button"
+                className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100 text-sm sm:text-base"
+                onClick={() => handleGoogleClick(isLogin ? "login" : "signup")}
+              >
+                <img
+                  src="https://img.icons8.com/color/24/google-logo.png"
+                  alt="google"
+                  className="mr-2 w-5 h-5 sm:w-6 sm:h-6"
+                />
+                Continue with Google
+              </button>
+            </div>
             <Link to={getLinkWithQuery(isLogin)}>
-              <button className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100 mt-5"> <img src="https://img.icons8.com/color/24/email.png" alt="email" className="mr-2" /> Continue with Email </button> </Link>
+              <button className="w-full border border-gray-300 py-2 rounded flex items-center justify-center hover:bg-gray-100 mt-2 lg:mt-5 text-sm sm:text-base">
+                <img
+                  src="https://img.icons8.com/color/24/email.png"
+                  alt="email"
+                  className="mr-2 w-5 h-5 sm:w-6 sm:h-6"
+                />
+                Continue with Email
+              </button>
+            </Link>
           </div>
 
           {/* Divider */}
-          <div className="flex items-center my-6">
+          <div className="flex items-center my-0 lg:my-6">
             <div className="border-t w-full"></div>
-            <span className="px-4 text-gray-500">or</span>
+            <span className="px-4 text-gray-500 text-sm sm:text-base">or</span>
             <div className="border-t w-full"></div>
           </div>
 
@@ -154,7 +175,7 @@ const LoginSignup = () => {
           </div>
 
           {/* Terms */}
-          <p className="text-xs text-gray-500 mt-6">
+          <p className="text-xs text-gray-500 mt-3 lg:mt-6 text-center md:text-left">
             By joining, you agree to the{" "}
             <a href="#" className="text-blue-700 underline">
               Terms of Service
@@ -170,7 +191,7 @@ const LoginSignup = () => {
           <div className="text-center">
             <button
               onClick={() => navigate(-1)}
-              className="mt-6 px-6 py-2 bg-[#7B2D43] text-white rounded-lg hover:bg-red-500 transition duration-300 shadow-md"
+              className="mt-2 lg:mt-6 px-6 py-2 bg-[#7B2D43] text-white rounded-lg hover:bg-red-500 transition duration-300 shadow-md text-sm lg:text-base"
             >
               Close
             </button>
