@@ -74,6 +74,7 @@ app.post("/api/payment/create-order", async (req, res) => {
   }
 });
 
+//hello welcome
 // ✅ Import all your existing routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/services", require("./routes/serviceRoutes"));
