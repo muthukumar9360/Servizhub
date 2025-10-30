@@ -23,15 +23,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET, // keep it safe
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
+      secure: true,       // since Render uses HTTPS
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      maxAge: 1000 * 60 * 60, // 1 hour
-    },
+      sameSite: "none"    // required for cross-origin cookies
+    }
   })
 );
 
