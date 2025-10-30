@@ -10,6 +10,8 @@ const Message = require("./models/Message"); // ✅ Create this model
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 // ✅ CORS setup so React frontend can send cookies
 app.use(
   cors({
