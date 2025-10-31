@@ -10,11 +10,25 @@ const Message = require("./models/Message"); // ✅ Create this model
 
 const app = express();
 
-// ✅ CORS setup so React frontend can send cookies
+const allowedOrigins = [
+  process.env.CLIENT_URL, // your deployed frontend
+  "http://localhost:3000", // local dev frontend
+];
+
+app.set("trust proxy", 1);
+
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`, // React frontend URL
-    credentials: true, // allow cookies
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
