@@ -8,7 +8,7 @@ export default function UserProfile() {
   const [userId1, setUserId1] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const api=import.meta.env.VITE_SERVER_URL;
+  const api = import.meta.env.VITE_SERVER_URL;
 
   useEffect(() => {
     fetch(`${api}/userprofile/${userId}`)
@@ -26,24 +26,30 @@ export default function UserProfile() {
         }
       })
       .catch((err) => console.error("Error fetching session:", err));
-  },[userId1]);
+  }, [userId1]);
 
   const handlePayment = async (packageData) => {
-    const response = await fetch("http://localhost:5024/api/payment/order", {
+  try {
+    const response = await fetch(`${api}/payment/create-order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount: packageData.price }),
     });
 
-    const orderData = await response.json();
+    const data = await response.json();
+
+    if (!data.order) {
+      alert("⚠️ Failed to create Razorpay order");
+      return;
+    }
 
     const options = {
-      key: "YOUR_RAZORPAY_TEST_KEY_ID",
-      amount: orderData.amount,
-      currency: orderData.currency,
+      key: data.key, // ✅ From backend
+      amount: data.order.amount,
+      currency: data.order.currency,
       name: "Freelancer Marketplace",
       description: `Hire ${user.name}`,
-      order_id: orderData.id,
+      order_id: data.order.id,
       handler: function (response) {
         alert(`✅ Payment Successful!\nPayment ID: ${response.razorpay_payment_id}`);
       },
@@ -58,7 +64,12 @@ export default function UserProfile() {
 
     const razor = new window.Razorpay(options);
     razor.open();
-  };
+  } catch (error) {
+    console.error("Payment error:", error);
+    alert("Payment failed. Please try again later.");
+  }
+};
+
 
   setTimeout(() => setLoading(false), 2000);
 
@@ -86,7 +97,7 @@ export default function UserProfile() {
       </div>
 
     );
-    console.log("user:", user);
+  console.log("user:", user);
   console.log("user Id1:", userId1);
   return (
     <div className="min-h-screen bg-gray-50 py-4 px-6">
@@ -138,8 +149,8 @@ export default function UserProfile() {
                 className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700 transition"
                 onClick={() =>
                   handlePayment({
-                    title: "Custom Hire",
-                    price: user.price || 100,
+                    title: "Hire Package",
+                    price: user.price || 100, // dynamically use user's price
                   })
                 }
               >

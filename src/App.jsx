@@ -17,7 +17,6 @@ import ServiceInfo from "./ServiceList/ServiceInfo";
 import SubcategoryInfo from "./ServiceList/SubcategoryInfo";
 import OfflineToggleButton from "./Components/OfflineToggleButton";
 import UserProfile from "./ServiceList/UserProfile";
-import Payment from "./Components/Payment";
 import JustDialPages from "./Pages/JustDialPages";
 import SubcategoryListingPage from "./JustDialHome/ServicesPages/SubCategoryListingPage";
 import SubServicePage from "./JustDialHome/ServicesPages/SubServicePage";
@@ -52,7 +51,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/payment" element={<Payment />} />
           <Route path="/loginsignup" element={<LoginSignup />} />
           <Route path="/loginsignup/login" element={<LoginForm />} />
           <Route path="/loginsignup/signup" element={<SignupForm />} />
