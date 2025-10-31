@@ -65,15 +65,15 @@ app.post("/api/payment/create-order", async (req, res) => {
       return res.status(400).json({ error: "Invalid amount" });
     }
 
+    // ✅ Correct order creation
     const options = {
-      amount: Math.round(amount * 100),
+      amount: Math.round(amount * 100), // amount in paise
       currency: "INR",
       receipt: "receipt_" + Date.now(),
       payment_capture: 1,
       notes: {
         payment_for: "Freelance Marketplace",
       },
-      method: "upi",
     };
 
     const order = await razorpay.orders.create(options);
@@ -83,7 +83,7 @@ app.post("/api/payment/create-order", async (req, res) => {
     console.error("❌ Razorpay API Error:", err);
     return res
       .status(500)
-      .json({ error: err.message || "Failed to simulate orders" });
+      .json({ error: err.message || "Failed to create order" });
   }
 });
 
@@ -97,7 +97,7 @@ app.use("/api/otp", require("./routes/otpRoutes"));
 app.use("/api/forget", require("./routes/forgetRoutes"));
 app.use("/api/subcategory", require("./routes/subcategoryRoutes"));
 app.use("/api/userprofile", require("./routes/userProfileRoutes"));
-app.use("/api/business",require("./routes/businessRoutes"));
+app.use("/api/business", require("./routes/businessRoutes"));
 app.use("/api/businesslist", require("./routes/businesslistRoutes"));
 app.use("/api/chat", require("./routes/messageRoutes"));
 app.use("/api/favourites", require("./routes/favouriteRoutes"));
@@ -129,7 +129,7 @@ io.on("connection", (socket) => {
     try {
       const message = new Message({ senderId, receiverId, text });
       await message.save();
-      console.log("✅ Message saved:", message );
+      console.log("✅ Message saved:", message);
       const room = [senderId, receiverId].sort().join("_");
       io.to(room).emit("receiveMessage", message); // Send message to both users
     } catch (err) {
