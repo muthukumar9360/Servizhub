@@ -2,20 +2,42 @@ const mongoose = require("mongoose");
 
 const businessListSchema = new mongoose.Schema(
   {
-    _id:mongoose.Schema.Types.ObjectId,
-    name: String,
-    providerId: mongoose.Schema.Types.ObjectId,
-    mainCategoryId: mongoose.Schema.Types.ObjectId,
-    subCategoryId: mongoose.Schema.Types.ObjectId,
-    rating: Number,
-    numRatings: Number,
-    status: String,
-    claimed: Boolean,
-    address: String,
-    contactNumber: String,
-    isOpen: Boolean,
-    operatingHours: String,
+    // BASIC
+    name: { type: String, required: true },
 
+    providerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      index: true,
+      required: true,
+    },
+
+    mainCategoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "BusinessCategory",
+      index: true,
+      required: true,
+    },
+
+    subCategoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      index: true,
+      required: true,
+    },
+
+    // RATINGS
+    ratings: {
+      overall: { type: Number, default: 0 },
+      total: { type: Number, default: 0 },
+    },
+
+    status: { type: String, default: "Not Verified" },
+    claimed: { type: Boolean, default: false },
+    isOpen: { type: Boolean, default: true },
+    operatingHours: String,
+    extraInfo: String,
+
+    // MEDIA
     media: {
       mainImages: [
         {
@@ -24,37 +46,46 @@ const businessListSchema = new mongoose.Schema(
         },
       ],
       totalPhotos: Number,
-      photoCategories: [
+
+      categories: [
         {
           name: String,
+          images: { type: Array, default: [] },
           count: Number,
         },
       ],
-      videoTour: String,
+
+      video: String,
     },
 
+    // OVERVIEW
     overview: {
       description: String,
       establishedYear: Number,
       facilities: [String],
+
       capacity: {
         minGuests: Number,
         maxGuests: Number,
       },
+
       priceRange: String,
       availableFor: [String],
       openingHours: String,
       closedDays: String,
       website: String,
       email: String,
+
       occasion: [String],
       banquetType: [String],
-      contact: String,
+
       addressDetails: {
         name: String,
         line2: String,
       },
+
       exploreCategories: [String],
+
       relatedListings: [
         {
           name: String,
@@ -67,15 +98,18 @@ const businessListSchema = new mongoose.Schema(
           imageUrl: String,
         },
       ],
+
       faq: [
         {
           q: String,
           a: String,
         },
       ],
+
       services: [String],
     },
 
+    // LOCATION
     locationDetails: {
       address: String,
       area: String,
@@ -85,6 +119,7 @@ const businessListSchema = new mongoose.Schema(
       mapLink: String,
     },
 
+    // CONTACT
     contactDetails: {
       phone: String,
       whatsapp: String,
@@ -96,10 +131,15 @@ const businessListSchema = new mongoose.Schema(
 
     highlights: [String],
 
+    // REVIEWS
     reviews: {
-      jdRating: Number,
-      totalReviews: Number,
-      userReviews: [
+      alsoListedIn: [
+        {
+          category: String,
+          count: String,
+        },
+      ],
+      list: [
         {
           name: String,
           reviewsCount: Number,
@@ -109,21 +149,21 @@ const businessListSchema = new mongoose.Schema(
           highlight: String,
         },
       ],
-      alsoListedIn: [
-        {
-          category: String,
-          count: String,
-        },
-      ],
     },
 
+    // META
     meta: {
-      lastUpdated: Date,
-      status: String,
-      verifiedListing: Boolean,
+      lastUpdated: { type: Date, default: Date.now },
+      status: { type: String, default: "Active" },
+      verifiedListing: { type: Boolean, default: false },
     },
+
+    tags: [String],
   },
-  { collection: "Businesslist" }
+  {
+    collection: "Businesslist",
+    timestamps: true,
+  }
 );
 
-module.exports = mongoose.model("BusinessList", businessListSchema,"Businesslist");
+module.exports = mongoose.model("BusinessList", businessListSchema);

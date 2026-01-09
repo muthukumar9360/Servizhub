@@ -1,5 +1,6 @@
 const BusinessCategory = require("../models/Business.js");
-const BusinessList = require("../models/BusinessList.js")
+const BusinessList = require("../models/BusinessList.js");
+const mongoose = require("mongoose");
 
 const getAllCategories = async (req, res) => {
   try {
@@ -13,32 +14,51 @@ const getAllCategories = async (req, res) => {
 const getSubcategoryById = async (req, res) => {
   try {
     const { id } = req.params;
+    const subCategoryId = new mongoose.Types.ObjectId(id);
 
-    // find the category that contains this subcategory
-    const category = await BusinessCategory.findOne({ "subCategories._id": id });
+    // 1️⃣ Find category containing this subcategory
+    const category = await BusinessCategory.findOne({
+      "subCategories._id": subCategoryId
+    });
+
     if (!category) {
       return res.status(404).json({ error: "Subcategory not found" });
     }
 
-    // extract the selected subcategory
-    const subcategory = category.subCategories.id(id);
+    // 2️⃣ Extract selected subcategory
+    const subcategory = category.subCategories.id(subCategoryId);
 
-    // get other subcategories (exclude the selected one)
+    // 3️⃣ Fetch businesses from BusinessList
+    const listings = await BusinessList.find(
+      { subCategoryId },
+      {
+        name: 1,
+        ratings: 1,
+        tags: 1,
+        media: 1,
+        locationDetails: 1,
+        contactDetails: 1,
+        status: 1,
+        claimed: 1,
+        extraInfo: 1,
+        isOpen: 1
+      }
+    );
+
+    // 4️⃣ Other subcategories (no listings here)
     const otherSubcategories = category.subCategories
       .filter(sub => sub._id.toString() !== id)
       .map(sub => ({
         _id: sub._id,
         title: sub.title,
-        description: sub.description,
-        image: sub.image,
-        listings: sub.listings || [],
+        image: sub.image
       }));
 
-    // send response with selected subcategory, its listings, and other subcategories
+    // 5️⃣ Send response
     res.json({
       subcategory,
-      listings: subcategory.listings || [],
-      otherSubcategories,
+      listings,
+      otherSubcategories
     });
 
   } catch (error) {

@@ -35,18 +35,32 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       secure: true,       // since Render uses HTTPS
+//       httpOnly: true,
+//       sameSite: "none"    // required for cross-origin cookies
+//     }
+//   })
+// );
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true,       // since Render uses HTTPS
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      sameSite: "none"    // required for cross-origin cookies
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
     }
   })
 );
+
 
 // ✅ Connect to DB
 connectDB();
@@ -102,6 +116,8 @@ app.use("/api/businesslist", require("./routes/businesslistRoutes"));
 app.use("/api/chat", require("./routes/messageRoutes"));
 app.use("/api/favourites", require("./routes/favouriteRoutes"));
 app.use("/api/saved", require("./routes/savedRoutes"));
+app.use("/api/search", require("./routes/searchRoutes"));
+app.use("/api/business-email",  require("./routes/businessEmailRoutes"));
 
 const server = http.createServer(app);
 
