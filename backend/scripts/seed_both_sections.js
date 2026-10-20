@@ -222,7 +222,7 @@ const seedBothSections = async () => {
         email: "2312090@nec.edu.in",
         education: [{ degree: "B.Tech Information Technology", institution: "National Engineering College", year: 2026 }],
         projects: [
-          { title: "Servizio Marketplace", description: "Multi-vendor service discovery and booking platform", link: "https://github.com/muthukumar9360/Servizio" },
+          { title: "Servizhub Marketplace", description: "Multi-vendor service discovery and booking platform", link: "https://github.com/muthukumar9360/Servizhub" },
           { title: "Real-time Chat Engine", description: "Socket.IO bi-directional chat with room partitioning", link: "https://github.com/muthukumar9360" },
         ],
         reviews: [
@@ -1037,7 +1037,7 @@ const seedBothSections = async () => {
         contactDetails: {
           phone: "9876543201",
           whatsapp: "9876543201",
-          email: "grandimperial@servizio.com",
+          email: "grandimperial@servizhub.com",
           ownerName: "Sundaramurthy Chettiar",
           verified: true,
           gstin: "33AABCG1234F1Z1",
@@ -1080,7 +1080,7 @@ const seedBothSections = async () => {
         contactDetails: {
           phone: "9876543210",
           whatsapp: "9876543210",
-          email: "svmandapam@servizio.com",
+          email: "svmandapam@servizhub.com",
           ownerName: "Venkatesan R",
           verified: true,
           gstin: "33AABCV5678F1Z2",
