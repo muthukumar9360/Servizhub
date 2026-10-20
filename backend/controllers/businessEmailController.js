@@ -24,7 +24,7 @@ exports.sendOtpToEmail = async (req, res) => {
 
     await sendMail({
       to: email,
-      subject: "Your Servizio OTP",
+      subject: "Your Servizhub OTP",
       html: `<h3>Your OTP is <b>${otp}</b></h3><p>Valid for 5 minutes.</p>`,
     });
 
@@ -81,7 +81,7 @@ exports.verifyOtpAndSendPdf = async (req, res) => {
 
     await sendMail({
       to: email,
-      subject: `Servizio - ${subTitle} List`,
+      subject: `Servizhub - ${subTitle} List`,
       html: `<p>Hello ${name || ""},</p>
              <p>Please find attached the business list you requested.</p>`,
       attachments: [

@@ -59,7 +59,7 @@ const RemainingSection = () => {
             href="#"
             className="bg-white text-[#541c2b] font-semibold px-5 py-2 rounded-md hover:bg-gray-300"
           >
-            Join ServiHub
+            Join Servizhub
           </a>
         </div>
       </section>

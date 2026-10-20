@@ -29,6 +29,7 @@ app.use(
       const cleanOrigin = origin.replace(/\/$/, "");
       const isAllowed =
         allowedOrigins.some((allowed) => allowed === cleanOrigin || allowed === origin) ||
+        cleanOrigin.endsWith(".netlify.app") ||
         cleanOrigin.endsWith(".web.app") ||
         cleanOrigin.endsWith(".firebaseapp.com") ||
         cleanOrigin.endsWith(".vercel.app");
@@ -45,7 +46,7 @@ app.use(
 );
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok", service: "servihub-backend", timestamp: new Date() });
+  res.status(200).json({ status: "ok", service: "servizhub-backend", timestamp: new Date() });
 });
 
 app.use(express.json());
@@ -55,7 +56,7 @@ const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "servihub_master_secret_session_key",
+    secret: process.env.SESSION_SECRET || "servizhub_master_secret_session_key",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({

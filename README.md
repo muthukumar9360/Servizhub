@@ -1,4 +1,4 @@
-# ServiHub — Multi-Vendor Local Service Provider & Freelance Marketplace Platform
+# Servizhub — Multi-Vendor Local Service Provider & Freelance Marketplace Platform
 
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
@@ -7,7 +7,7 @@
 [![Redux Toolkit](https://img.shields.io/badge/State-Redux%20Toolkit-764ABC?style=flat-square&logo=redux)](https://redux-toolkit.js.org/)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
 
-**ServiHub** is an enterprise-grade, full-stack multi-vendor local service discovery and booking marketplace platform (similar to Justdial and Urban Company). It seamlessly connects local customers with verified service providers across major industries including **Wedding & Event Requisites**, **Repairs & Home Services**, **Beauty & Wellness**, **Packers & Movers**, and **Daily Needs**.
+**Servizhub** is an enterprise-grade, full-stack multi-vendor local service discovery and booking marketplace platform (similar to Justdial and Urban Company). It seamlessly connects local customers with verified service providers across major industries including **Wedding & Event Requisites**, **Repairs & Home Services**, **Beauty & Wellness**, **Packers & Movers**, and **Daily Needs**.
 
 ---
 
@@ -235,7 +235,7 @@ sequenceDiagram
 ## 💾 Database Schema & Collections
 
 ```text
-MongoDB: servizio
+MongoDB: servizhub
 ├── Businesses               # Main service categories & subcategory arrays
 ├── Businesslist             # Verified local business listings with contact, hours & media
 ├── services                 # Service catalog categories (mirrored for fast lookup)
@@ -258,7 +258,7 @@ MongoDB: servizio
 ## 📂 Unified Monorepo Directory Structure
 
 ```text
-Servizio/
+Servizhub/
 ├── backend/                              # Express.js Backend Server (:5024)
 │   ├── config/                          # MongoDB Atlas & Cloudinary configurations
 │   ├── controllers/                     # Business logic controllers (Auth, Business, Listings, etc.)
@@ -347,8 +347,8 @@ Servizio/
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/muthukumar9360/Servizio.git
-cd Servizio
+git clone https://github.com/muthukumar9360/Servizhub.git
+cd Servizhub
 ```
 
 ### Step 2: Configure Environment Variables
@@ -362,12 +362,12 @@ Ensure your `backend/.env` contains your MongoDB Atlas connection string:
 ```ini
 PORT=5024
 NODE_ENV=development
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.uzsaneo.mongodb.net/servizio?retryWrites=true&w=majority
-ACCESS_TOKEN_SECRET=servizio_master_access_secret_key_998877665544332211
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.uzsaneo.mongodb.net/servizhub?retryWrites=true&w=majority
+ACCESS_TOKEN_SECRET=servizhub_master_access_secret_key_998877665544332211
 ACCESS_TOKEN_EXPIRY=15m
-REFRESH_TOKEN_SECRET=servizio_master_refresh_secret_key_112233445566778899
+REFRESH_TOKEN_SECRET=servizhub_master_refresh_secret_key_112233445566778899
 REFRESH_TOKEN_EXPIRY=7d
-SESSION_SECRET=servizio_session_secret_key_12345
+SESSION_SECRET=servizhub_session_secret_key_12345
 CLIENT_URL=http://localhost:5173
 ```
 
@@ -438,4 +438,4 @@ docker-compose up --build
 ---
 
 ## 📄 License
-ISC License © 2026 Muthu Kumar — Built for Servizio Service Provider Platform.
+ISC License © 2026 Muthu Kumar — Built for Servizhub Service Provider Platform.

@@ -38,7 +38,7 @@ const CopySection = () => {
         </div>
         <div className="max-w-xl">
           <h3 className="text-5xl font-bold text-gray-800 mb-8">
-            servihub <span className="font-normal">pro.</span>
+            servizhub <span className="font-normal">pro.</span>
           </h3>
           <h2 className="text-3xl font-semibold mb-6">
             The <span className="text-green-600">premium</span> freelance solution for businesses

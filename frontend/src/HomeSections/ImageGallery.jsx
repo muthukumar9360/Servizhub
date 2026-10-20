@@ -6,7 +6,7 @@ const ImageGallery = () => {
     <div>
       <section className="py-5 px-10 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
-          Made on ServiHub
+          Made on Servizhub
         </h2>
 
         <div className="space-x-4 bg-white flex">
@@ -115,7 +115,7 @@ const ImageGallery = () => {
       <section class="bg-pink-50 rounded-2xl p-8 mt-8 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto shadow border-2 border-neutral-900">
         <div class="max-w-lg">
           <h2 class="text-3xl font-semibold text-gray-900 mb-3">
-            <span class="font-bold">ServiHub</span> <span class="font-light">logo maker.</span>
+            <span class="font-bold">Servizhub</span> <span class="font-light">logo maker.</span>
           </h2>
           <h3 class="text-4xl font-bold text-gray-900 mb-3">
             Make an incredible logo <span class="text-orange-500">in seconds</span>
@@ -124,7 +124,7 @@ const ImageGallery = () => {
             Pre-designed by top talent. Just add your touch.
           </p>
           <button class="bg-black text-white font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition">
-            Try ServiHub Logo Maker
+            Try Servizhub Logo Maker
           </button>
         </div>
 

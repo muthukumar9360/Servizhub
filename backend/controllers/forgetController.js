@@ -33,7 +33,7 @@ const sendOtp = async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: `"Servizio" <${process.env.EMAIL_USER}>`,
+      from: `"Servizhub" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "Password Reset OTP",
       text: `Your OTP for resetting password is ${otp}. It is valid for 2 minutes.`,

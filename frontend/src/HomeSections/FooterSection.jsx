@@ -31,13 +31,13 @@ const FooterSection = () => {
         <div>
           <h3 className="font-bold mb-3">For Clients</h3>
           <ul className="space-y-2">
-            <li>How ServiHub Works</li>
+            <li>How Servizhub Works</li>
             <li>Customer Success Stories</li>
             <li>Trust & Safety</li>
             <li>Quality Guide</li>
             <li>Learn – Online Courses</li>
-            <li>ServiHub Guides</li>
-            <li>ServiHub Answers</li>
+            <li>Servizhub Guides</li>
+            <li>Servizhub Answers</li>
           </ul>
         </div>
 
@@ -45,7 +45,7 @@ const FooterSection = () => {
         <div>
           <h3 className="font-bold mb-3">For Freelancers</h3>
           <ul className="space-y-2">
-            <li>Become a ServiHub Freelancer</li>
+            <li>Become a Servizhub Freelancer</li>
             <li>Become an Agency</li>
             <li>Freelancer Equity Program</li>
             <li>Community Hub</li>
@@ -58,14 +58,14 @@ const FooterSection = () => {
         <div>
           <h3 className="font-bold mb-3">Business Solutions</h3>
           <ul className="space-y-2">
-            <li>ServiHub Pro</li>
+            <li>Servizhub Pro</li>
             <li>Project Management Service</li>
             <li>Expert Sourcing Service</li>
             <li>ClearVoice – Content Marketing</li>
             <li>Working Not Working – Creative Talent</li>
             <li>AutoDS – Dropshipping Tool</li>
             <li>AI Store Builder</li>
-            <li>ServiHub Logo Maker</li>
+            <li>Servizhub Logo Maker</li>
             <li>Contact Sales</li>
           </ul>
         </div>
@@ -74,7 +74,7 @@ const FooterSection = () => {
         <div>
           <h3 className="font-bold mb-3">Company</h3>
           <ul className="space-y-2">
-            <li>About ServiHub</li>
+            <li>About Servizhub</li>
             <li>Help & Support</li>
             <li>Social Impact</li>
             <li>Careers</li>
@@ -94,7 +94,7 @@ const FooterSection = () => {
       {/* Bottom Bar */}
       <div className="border-t-4 border-b-4 py-10 px-6 flex flex-col md:flex-row justify-around items-center text-gray-600 text-4xl">
         <p className="mb-2 md:mb-0">
-          &copy; <span className="font-bold text-black">ServiHub </span>International Ltd. 2026
+          &copy; <span className="font-bold text-black">Servizhub </span>International Ltd. 2026
         </p>
         <div className="flex gap-4 text-4xl text-black">
           <i className="fab fa-tiktok"></i>

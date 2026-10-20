@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: servizio-backend
+    name: servizhub-backend
     runtime: node
     rootDir: backend
     branch: deploy
