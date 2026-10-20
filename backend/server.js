@@ -52,6 +52,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
+const isProduction = process.env.NODE_ENV === "production" || !process.env.CLIENT_URL?.includes("localhost");
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "servizhub_master_secret_session_key",
@@ -63,9 +65,10 @@ app.use(
       ttl: 14 * 24 * 60 * 60, // 14 days
     }),
     cookie: {
-      secure: process.env.NODE_ENV === "production",
+      secure: isProduction,
       httpOnly: true,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      sameSite: isProduction ? "none" : "lax",
+      partitioned: isProduction,
       maxAge: 14 * 24 * 60 * 60 * 1000,
     },
   })

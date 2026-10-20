@@ -48,6 +48,10 @@ const LoginForm = () => {
 
       if (res.ok) {
         alert(`✅ ${data.message}`);
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          if (data.user.username) localStorage.setItem("username", data.user.username);
+        }
         if(offline==="true"){
           window.location.href = "/JustDialPages";
         }

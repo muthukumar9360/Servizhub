@@ -19,25 +19,60 @@ const BusinessHeaderSection = () => {
 
   // 🔐 Logout
   const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("username");
+    setUsername("Guest");
     fetch(`${api}/session/logout`, {
       method: "POST",
       credentials: "include",
     })
       .then(() => {
         alert("Logged out successfully...");
-        setUsername("Guest");
       })
       .catch((err) => console.error("Error logging out:", err));
   };
 
   // 👤 Session + city
   useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("user"));
+      if (stored && (stored.username || stored.firstname)) {
+        setUsername(stored.username || stored.firstname);
+      }
+    } catch (e) {}
+
     fetch(`${api}/session/me`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
-        if (data.user) setUsername(data.user.username);
+        if (data.user) {
+          setUsername(data.user.username);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          if (data.user.username) localStorage.setItem("username", data.user.username);
+        } else {
+          try {
+            const stored = JSON.parse(localStorage.getItem("user"));
+            if (stored && (stored.username || stored.firstname)) {
+              setUsername(stored.username || stored.firstname);
+            } else {
+              setUsername("Guest");
+            }
+          } catch (e) {
+            setUsername("Guest");
+          }
+        }
       })
-      .catch(() => setUsername("Guest"));
+      .catch(() => {
+        try {
+          const stored = JSON.parse(localStorage.getItem("user"));
+          if (stored && (stored.username || stored.firstname)) {
+            setUsername(stored.username || stored.firstname);
+          } else {
+            setUsername("Guest");
+          }
+        } catch (e) {
+          setUsername("Guest");
+        }
+      });
 
     setCity("Tirunelveli");
   }, []);

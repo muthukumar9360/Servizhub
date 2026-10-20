@@ -162,12 +162,24 @@ router.get("/google/callback-login", async (req, res) => {
       email: user.email,
       phno: user.phno,
       userId: user._id,
+      userType: user.userType,
     };
 
     req.session.save((saveErr) => {
       if (saveErr) console.error("Session save error:", saveErr);
-      // 5️⃣ Redirect to dashboard/home
-      res.redirect(`${getClientUrl()}/?login=success`);
+      const userParam = encodeURIComponent(
+        JSON.stringify({
+          username: user.username,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          _id: user._id,
+          userId: user._id,
+          userType: user.userType,
+        })
+      );
+      // 5️⃣ Redirect to dashboard/home with user payload
+      res.redirect(`${getClientUrl()}/?login=success&user=${userParam}`);
     });
   } catch (err) {
     console.error("Google Login Callback Error:", err);

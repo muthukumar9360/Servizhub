@@ -9,31 +9,79 @@ const HeroSection = () => {
   const [username, setUsername] = useState(null);
 
   const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("username");
+    setUsername("Guest");
     fetch(`${api}/session/logout`, {
       method: "POST",
       credentials: "include",
     })
       .then(() => {
         alert("Logged out successfully...");
-        setUsername("Guest");
       })
       .catch((err) => console.error("Error logging out:", err));
   };
 
   useEffect(() => {
-    // Fetch logged-in user
+    // 1️⃣ Check for OAuth redirect user param
+    const searchParams = new URLSearchParams(window.location.search);
+    const userParam = searchParams.get("user");
+    if (userParam) {
+      try {
+        const parsed = JSON.parse(decodeURIComponent(userParam));
+        if (parsed && (parsed.username || parsed.email)) {
+          localStorage.setItem("user", JSON.stringify(parsed));
+          if (parsed.username) localStorage.setItem("username", parsed.username);
+          setUsername(parsed.username || parsed.firstname || "User");
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+      } catch (e) {
+        console.error("Failed to parse user param:", e);
+      }
+    } else {
+      // Immediate fallback from localStorage
+      try {
+        const stored = JSON.parse(localStorage.getItem("user"));
+        if (stored && (stored.username || stored.firstname)) {
+          setUsername(stored.username || stored.firstname);
+        }
+      } catch (e) {}
+    }
+
+    // 2️⃣ Verify with backend session
     fetch(`${api}/session/me`, { credentials: "include" })
       .then((res) => (res.ok ? res.json() : { user: null }))
       .then((data) => {
         if (data && data.user) {
           setUsername(data.user.username);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          if (data.user.username) localStorage.setItem("username", data.user.username);
         } else {
-          setUsername("Guest");
+          // Keep localStorage if user logged in via OAuth redirect
+          try {
+            const stored = JSON.parse(localStorage.getItem("user"));
+            if (stored && (stored.username || stored.firstname)) {
+              setUsername(stored.username || stored.firstname);
+            } else {
+              setUsername("Guest");
+            }
+          } catch (e) {
+            setUsername("Guest");
+          }
         }
       })
       .catch((err) => {
-        console.warn("Guest session:", err.message);
-        setUsername("Guest");
+        try {
+          const stored = JSON.parse(localStorage.getItem("user"));
+          if (stored && (stored.username || stored.firstname)) {
+            setUsername(stored.username || stored.firstname);
+          } else {
+            setUsername("Guest");
+          }
+        } catch (e) {
+          setUsername("Guest");
+        }
       });
 
     // Fetch services with cache

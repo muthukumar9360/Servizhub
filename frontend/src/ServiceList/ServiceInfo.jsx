@@ -22,13 +22,15 @@ const ServiceInfo = () => {
     const [username, setUsername] = useState(null);
 
     const handleLogout = () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("username");
+        setUsername("Guest");
         fetch(`${api}/session/logout`, {
             method: "POST",
             credentials: "include",
         })
             .then(() => {
                 alert("Logged out successfully...");
-                setUsername("Guest");
             })
             .catch((err) => console.error("Error logging out:", err));
     };
@@ -37,16 +39,48 @@ const ServiceInfo = () => {
     useEffect(() => {
         let isMounted = true;
 
+        try {
+            const stored = JSON.parse(localStorage.getItem("user"));
+            if (stored && (stored.username || stored.firstname)) {
+                setUsername(stored.username || stored.firstname);
+            }
+        } catch (e) {}
+
         fetch(`${api}/session/me`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
                 if (data.user && isMounted) {
-                    sessionStorage.setItem("userdemoId", data.user.userId);
-                    setUsername(data.user._id);
-                    localStorage.setItem("username", data.user._id);
+                    sessionStorage.setItem("userdemoId", data.user.userId || data.user._id);
+                    setUsername(data.user.username || data.user.firstname);
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    localStorage.setItem("username", data.user.username || data.user.firstname);
+                } else if (isMounted) {
+                    try {
+                        const stored = JSON.parse(localStorage.getItem("user"));
+                        if (stored && (stored.username || stored.firstname)) {
+                            setUsername(stored.username || stored.firstname);
+                        } else {
+                            setUsername("Guest");
+                        }
+                    } catch (e) {
+                        setUsername("Guest");
+                    }
                 }
             })
-            .catch((err) => console.error("Error fetching session:", err));
+            .catch((err) => {
+                if (isMounted) {
+                    try {
+                        const stored = JSON.parse(localStorage.getItem("user"));
+                        if (stored && (stored.username || stored.firstname)) {
+                            setUsername(stored.username || stored.firstname);
+                        } else {
+                            setUsername("Guest");
+                        }
+                    } catch (e) {
+                        setUsername("Guest");
+                    }
+                }
+            });
 
         Promise.all([
             fetchWithCache(`${api}/services/${id}`),
