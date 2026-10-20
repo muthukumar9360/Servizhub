@@ -27,7 +27,8 @@ app.use(
       const cleanOrigin = origin.replace(/\/$/, "");
       const isAllowed =
         allowedOrigins.some((allowed) => allowed === cleanOrigin || allowed === origin) ||
-        cleanOrigin.endsWith(".netlify.app") ||
+        cleanOrigin.endsWith(".web.app") ||
+        cleanOrigin.endsWith(".firebaseapp.com") ||
         cleanOrigin.endsWith(".vercel.app");
 
       if (isAllowed) {
@@ -143,7 +144,8 @@ const io = new Server(server, {
       const cleanOrigin = origin.replace(/\/$/, "");
       const isAllowed =
         allowedOrigins.some((allowed) => allowed === cleanOrigin || allowed === origin) ||
-        cleanOrigin.endsWith(".netlify.app") ||
+        cleanOrigin.endsWith(".web.app") ||
+        cleanOrigin.endsWith(".firebaseapp.com") ||
         cleanOrigin.endsWith(".vercel.app");
       callback(null, isAllowed ? origin : true);
     },

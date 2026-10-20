@@ -3,6 +3,7 @@ services:
     name: servizio-backend
     runtime: node
     rootDir: backend
+    branch: deploy
     buildCommand: npm install
     startCommand: node server.js
     plan: free
