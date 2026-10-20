@@ -20,7 +20,7 @@ import UserProfile from "./ServiceList/UserProfile";
 import JustDialPages from "./Pages/JustDialPages";
 import SubcategoryListingPage from "./JustDialHome/ServicesPages/SubCategoryListingPage";
 import SubServicePage from "./JustDialHome/ServicesPages/SubServicePage";
-import ChatPage from "./ChatBox/ChatPage";
+import ChatPage from "./ChatBox/ChatPage"
 import CompleteProfile from "./JustDialHome/ServicesPages/CompleteProfile";
 import MyBusinessPage from "./JustDialHome/ServicesPages/MyBusinessPage";
 import AddBusinessPage from "./JustDialHome/ServicesPages/AddBusinessPage";
@@ -44,30 +44,33 @@ function HomePage() {
 }
 
 function App() {
+  
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/loginsignup" element={<LoginSignup />} />
-        <Route path="/loginsignup/login" element={<LoginForm />} />
-        <Route path="/loginsignup/signup" element={<SignupForm />} />
-        <Route path="/loginsignup/forgot" element={<ForgetForm />} />
-        <Route path="/loginsignup/otp" element={<OtpPage />} />
-        <Route path="/services/:id" element={<ServiceInfo />} />
-        <Route path="/subcategory/:subId" element={<SubcategoryInfo />} />
-        <Route path="/userprofile/:userId" element={<UserProfile />} />
-        <Route path="/JustDialPages" element={<JustDialPages />} />
-        <Route path="/Businesssubcategory/:id" element={<SubcategoryListingPage />} />
-        <Route path="/SubcategoryDetails/:id" element={<SubServicePage />} />
-        <Route path="/Chat/:providerId" element={<ChatPage />} />
-        <Route path="/justdial/completeprofile" element={<CompleteProfile />} />
-        <Route path="/mybusinesslist/:userId" element={<MyBusinessPage />} />
-        <Route path="/addbusiness/:userId" element={<AddBusinessPage />} />
-        <Route path="/all-categories" element={<AllCategoriesPage />} />
-        <Route path="/profile-form" element={<ProfileForm />} />
-        <Route path="*" element={<div className="p-8 text-center text-xl">404 - Page Not Found</div>} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/loginsignup" element={<LoginSignup />} />
+          <Route path="/loginsignup/login" element={<LoginForm />} />
+          <Route path="/loginsignup/signup" element={<SignupForm />} />
+          <Route path="/loginsignup/forgot" element={<ForgetForm />} />
+          <Route path="/loginsignup/otp" element={<OtpPage />} />
+          <Route path="/services/:id" element={<ServiceInfo />} />
+          <Route path="/subcategory/:subId" element={<SubcategoryInfo />} />
+          <Route path="/userprofile/:userId" element={<UserProfile />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="/JustDialPages" element={<JustDialPages />} />
+          <Route path="/Businesssubcategory/:id" element={<SubcategoryListingPage />}></Route>
+          <Route path="/SubcategoryDetails/:id" element={<SubServicePage />}></Route>
+          <Route path="/Chat/:providerId" element={<ChatPage />}></Route>
+          <Route path="/justdial/completeprofile" element={<CompleteProfile/>}></Route>
+          <Route path="/mybusinesslist/:userId" element={<MyBusinessPage/>} />
+          <Route path="/addbusiness/:userId" element={<AddBusinessPage/>} />
+          <Route path="/all-categories" element={<AllCategoriesPage />} />
+          <Route path="/profile-form" element={<ProfileForm />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

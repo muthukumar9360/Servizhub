@@ -25,7 +25,7 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "User with same username, email, or phone already exists" });
     }
 
-    if (confirmPassword && password !== confirmPassword) {
+    if (password !== confirmPassword) {
       return res.status(400).json({ message: "Passwords do not match" });
     }
 
@@ -36,7 +36,7 @@ const registerUser = async (req, res) => {
       email,
       username,
       dob,
-      userType: userType || "user",
+      userType,
       gender,
       password,
       isGoogleAccount: false,
@@ -44,16 +44,15 @@ const registerUser = async (req, res) => {
 
     await newUser.save();
 
-    // Save session
+     // Save session
     req.session.user = {
       username: newUser.username,
       email: newUser.email,
       phno: newUser.phno,
       userId: newUser._id,
-      userType: newUser.userType,
     };
 
-    return res.status(201).json({ message: "User registered successfully", user: newUser });
+    return res.status(201).json({ message: "OTP Verified...User registered successfully", user: newUser });
   } catch (error) {
     console.error("Register Error:", error);
     return res.status(500).json({ message: "Server Error" });
@@ -65,13 +64,13 @@ const loginUser = async (req, res) => {
   const { username, email, phno, password } = req.body;
 
   try {
-    // Build query based on provided fields
-    const query = { isGoogleAccount: false };
-    if (username) query.username = username;
-    if (email) query.email = email;
-    if (phno) query.phno = phno;
-
-    const user = await User.findOne(query);
+    // Find user where ALL fields match AND is NOT a Google account
+    const user = await User.findOne({
+      username,
+      email,
+      phno,
+      isGoogleAccount: false, // ✅ exclude Google accounts
+    });
 
     if (!user) {
       return res.status(404).json({ message: "User not found with these details" });
@@ -88,7 +87,6 @@ const loginUser = async (req, res) => {
       email: user.email,
       phno: user.phno,
       userId: user._id,
-      userType: user.userType,
     };
 
     return res.json({ message: "Login successful", user });
@@ -100,9 +98,10 @@ const loginUser = async (req, res) => {
 
 // ================= Google Signup =================
 const googleSignup = async (req, res) => {
-  const { googleId, email, firstname, lastname, username, dob, gender, phno, userType } = req.body;
+  const { googleId, email, firstname, lastname, username,dob,gender,phno,userType } = req.body;
 
   try {
+    // Check if Google account already exists
     const existingUser = await User.findOne({ googleId, email });
 
     if (existingUser) {
@@ -116,7 +115,7 @@ const googleSignup = async (req, res) => {
       email,
       username,
       dob,
-      userType: userType || "user",
+      userType,
       gender,
       isGoogleAccount: true,
       googleId,
@@ -129,7 +128,6 @@ const googleSignup = async (req, res) => {
       email: newUser.email,
       phno: newUser.phno,
       userId: newUser._id,
-      userType: newUser.userType,
     };
 
     return res.status(201).json({ message: "Google account registered successfully", user: newUser });
@@ -155,7 +153,6 @@ const googleLogin = async (req, res) => {
       email: user.email,
       phno: user.phno,
       userId: user._id,
-      userType: user.userType,
     };
 
     return res.json({ message: "Google login successful", user });

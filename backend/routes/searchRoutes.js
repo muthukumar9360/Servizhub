@@ -13,13 +13,14 @@ router.get("/business", async (req, res) => {
     const results = await BusinessList.aggregate([
       {
         $lookup: {
-          from: "Businesses",
+          from: "Businesses", // ✅ must match collection name
           localField: "mainCategoryId",
           foreignField: "_id",
           as: "mainCat",
         },
       },
       { $unwind: { path: "$mainCat", preserveNullAndEmptyArrays: true } },
+
       {
         $addFields: {
           subCat: {
@@ -32,6 +33,7 @@ router.get("/business", async (req, res) => {
         },
       },
       { $unwind: { path: "$subCat", preserveNullAndEmptyArrays: true } },
+
       {
         $match: {
           $or: [
@@ -41,6 +43,7 @@ router.get("/business", async (req, res) => {
           ],
         },
       },
+
       {
         $project: {
           name: 1,
@@ -49,6 +52,7 @@ router.get("/business", async (req, res) => {
           subCategoryName: "$subCat.title",
         },
       },
+
       { $limit: 10 },
     ]);
 
@@ -56,21 +60,6 @@ router.get("/business", async (req, res) => {
   } catch (err) {
     console.error("Search API error:", err);
     res.status(500).json({ message: "Search failed" });
-  }
-});
-
-// Generic search fallback for /api/search?q=...
-router.get("/", async (req, res) => {
-  const q = req.query.q;
-  if (!q || !q.trim()) return res.json([]);
-  try {
-    const regex = new RegExp(q, "i");
-    const results = await BusinessList.find({
-      $or: [{ name: regex }, { "contactDetails.city": regex }],
-    }).limit(10);
-    res.json(results);
-  } catch (err) {
-    res.status(500).json({ message: "Search error" });
   }
 });
 

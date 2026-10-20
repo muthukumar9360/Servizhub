@@ -4,11 +4,11 @@ const userSchema = new mongoose.Schema(
   {
     firstname: { type: String },
     lastname: { type: String },
-    phno: { type: String, unique: true, sparse: true },
+    phno: { type: String, unique: true, sparse: true }, // unique but optional
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
-    dob: { type: Date },
-    userType: { type: String, enum: ["user", "provider", "admin"], default: "user" },
+    dob: { type: Date }, // optional for Google users
+    userType: { type: String, enum: ["user", "provider"], default: "user" },
     gender: { type: String, enum: ["male", "female", "other"] },
 
     password: { type: String },
