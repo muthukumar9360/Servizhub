@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 
 const sendMail = async ({ to, subject, html, attachments = [] }) => {
   return transporter.sendMail({
-    from: `"Servizio" <${process.env.EMAIL_USER}>`,
+    from: `"ServiHub" <${process.env.EMAIL_USER}>`,
     to,
     subject,
     html,

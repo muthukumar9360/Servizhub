@@ -19,9 +19,9 @@ const sendOtp = async () => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Servizio", email: "perumpatayans@gmail.com" },
+        sender: { name: "ServiHub", email: "perumpatayans@gmail.com" },
         to: [{ email }],
-        subject: "Your OTP Code for Servizio",
+        subject: "Your OTP Code for ServiHub",
         htmlContent: `
           <div style="font-family:Arial;text-align:center;">
             <h2>🔐 Email Verification</h2>

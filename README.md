@@ -1,4 +1,4 @@
-# Servizio — Multi-Vendor Local Service Provider Marketplace Platform
+# ServiHub — Multi-Vendor Local Service Provider & Freelance Marketplace Platform
 
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
@@ -7,7 +7,7 @@
 [![Redux Toolkit](https://img.shields.io/badge/State-Redux%20Toolkit-764ABC?style=flat-square&logo=redux)](https://redux-toolkit.js.org/)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
 
-**Servizio** is an enterprise-grade, full-stack multi-vendor local service discovery and booking marketplace platform (similar to Justdial and Urban Company). It seamlessly connects local customers with verified service providers across major industries including **Wedding & Event Requisites**, **Repairs & Home Services**, **Beauty & Wellness**, **Packers & Movers**, and **Daily Needs**.
+**ServiHub** is an enterprise-grade, full-stack multi-vendor local service discovery and booking marketplace platform (similar to Justdial and Urban Company). It seamlessly connects local customers with verified service providers across major industries including **Wedding & Event Requisites**, **Repairs & Home Services**, **Beauty & Wellness**, **Packers & Movers**, and **Daily Needs**.
 
 ---
 

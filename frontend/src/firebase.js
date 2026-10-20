@@ -1,4 +1,4 @@
-// Firebase SDK Configuration for Servizio
+// Firebase SDK Configuration for ServiHub
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {

@@ -45,7 +45,7 @@ app.use(
 );
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok", service: "servizio-backend", timestamp: new Date() });
+  res.status(200).json({ status: "ok", service: "servihub-backend", timestamp: new Date() });
 });
 
 app.use(express.json());
@@ -55,7 +55,7 @@ const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "servizio_master_secret_session_key",
+    secret: process.env.SESSION_SECRET || "servihub_master_secret_session_key",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({

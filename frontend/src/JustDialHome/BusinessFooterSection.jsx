@@ -10,11 +10,11 @@ const BusinessFooterSection = () => {
         {/* Column 1 - Logo & About */}
         <div>
           <h2 className="text-5xl font-extrabold mb-8">
-            <span className="text-blue-500">Serv</span>
-            <span className="text-orange-400">izio</span>
+            <span className="text-blue-500">Servi</span>
+            <span className="text-orange-400">Hub</span>
           </h2>
           <p className="text-lg text-white mb-8">
-            Servizio helps you discover local businesses, services, and
+            ServiHub helps you discover local businesses, services, and
             professionals near you with trusted reviews and verified listings.
           </p>
           <div className="flex gap-4 mt-4">
@@ -54,7 +54,7 @@ const BusinessFooterSection = () => {
           <ul className="space-y-3 text-lg">
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-orange-400" />
-              support@servizio.com
+              support@servihub.com
             </li>
             <li className="flex items-center gap-2">
               <Phone size={16} className="text-orange-400" />
@@ -74,7 +74,7 @@ const BusinessFooterSection = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-gray-700 py-4 text-center text-sm text-white">
-        <p>© {new Date().getFullYear()} Servizio Pvt. Ltd. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} ServiHub Pvt. Ltd. All rights reserved.</p>
       </div>
     </footer>
   );
