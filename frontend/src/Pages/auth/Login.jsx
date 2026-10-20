@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { User, Lock, Wrench, ArrowRight } from "lucide-react";
-import Input from "../../components/common/Input";
-import Button from "../../components/common/Button";
+import Input from "../../Components/common/Input";
+import Button from "../../Components/common/Button";
 import axiosInstance from "../../api/axiosInstance";
 import {
   setAuthLoading,

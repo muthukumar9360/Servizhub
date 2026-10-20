@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Package, Calendar, MapPin, ArrowRight, Eye, ShieldCheck, FileCheck } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
-import Badge from "../../components/common/Badge";
-import Button from "../../components/common/Button";
-import LifecycleBar from "../../components/common/LifecycleBar";
-import InspectionComparisonModal from "../../components/common/InspectionComparisonModal";
+import Badge from "../../Components/common/Badge";
+import Button from "../../Components/common/Button";
+import LifecycleBar from "../../Components/common/LifecycleBar";
+import InspectionComparisonModal from "../../Components/common/InspectionComparisonModal";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);

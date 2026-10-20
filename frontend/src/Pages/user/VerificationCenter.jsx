@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ShieldCheck, Upload, FileText, CheckCircle, Clock, AlertCircle } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
-import Button from "../../components/common/Button";
-import Badge from "../../components/common/Badge";
+import Button from "../../Components/common/Button";
+import Badge from "../../Components/common/Badge";
 
 const VerificationCenter = () => {
   const { user } = useSelector((state) => state.auth);

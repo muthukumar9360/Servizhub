@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Search, Filter, Star, SlidersHorizontal, MapPin, Wrench, RefreshCw } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
-import Button from "../../components/common/Button";
-import Badge from "../../components/common/Badge";
+import Button from "../../Components/common/Button";
+import Badge from "../../Components/common/Badge";
 
 const BrowseEquipment = () => {
   const navigate = useNavigate();

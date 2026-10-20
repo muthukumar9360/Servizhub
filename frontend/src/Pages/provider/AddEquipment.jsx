@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Wrench, Upload, Plus, Trash2, ArrowLeft } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
-import Input from "../../components/common/Input";
-import Button from "../../components/common/Button";
+import Input from "../../Components/common/Input";
+import Button from "../../Components/common/Button";
 
 const AddEquipment = () => {
   const navigate = useNavigate();

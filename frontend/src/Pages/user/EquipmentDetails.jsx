@@ -3,10 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Star, ShieldCheck, MapPin, Calendar, Wrench, CheckCircle, AlertTriangle, QrCode, Activity, Heart } from "lucide-react";
 import axiosInstance from "../../api/axiosInstance";
-import Button from "../../components/common/Button";
-import Badge from "../../components/common/Badge";
-import QRCodeModal from "../../components/common/QRCodeModal";
-import TrustScoreBadge from "../../components/common/TrustScoreBadge";
+import Button from "../../Components/common/Button";
+import Badge from "../../Components/common/Badge";
+import QRCodeModal from "../../Components/common/QRCodeModal";
+import TrustScoreBadge from "../../Components/common/TrustScoreBadge";
 
 const EquipmentDetails = () => {
   const { id } = useParams();

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Wrench, ArrowRight } from "lucide-react";
-import Input from "../../components/common/Input";
-import Button from "../../components/common/Button";
-import OtpInput from "../../components/common/OtpInput";
+import Input from "../../Components/common/Input";
+import Button from "../../Components/common/Button";
+import OtpInput from "../../Components/common/OtpInput";
 import axiosInstance from "../../api/axiosInstance";
 
 const ForgotPassword = () => {

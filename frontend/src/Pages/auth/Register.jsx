@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { ShieldCheck, Mail, Phone, Lock, User, Wrench, ArrowRight } from "lucide-react";
-import Input from "../../components/common/Input";
-import Button from "../../components/common/Button";
-import OtpInput from "../../components/common/OtpInput";
+import Input from "../../Components/common/Input";
+import Button from "../../Components/common/Button";
+import OtpInput from "../../Components/common/OtpInput";
 import axiosInstance from "../../api/axiosInstance";
 import {
   setAuthLoading,

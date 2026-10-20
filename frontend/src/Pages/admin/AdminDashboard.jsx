@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ShieldCheck, Users, Package, AlertTriangle, FileText, CheckCircle, XCircle, DollarSign, Activity, PieChart } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RePieChart, Pie, Cell } from "recharts";
 import axiosInstance from "../../api/axiosInstance";
-import Badge from "../../components/common/Badge";
-import Button from "../../components/common/Button";
+import Badge from "../../Components/common/Badge";
+import Button from "../../Components/common/Button";
 
 const categoryDistribution = [
   { name: "Heavy Machinery", value: 18 },

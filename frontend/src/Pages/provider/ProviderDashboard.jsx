@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Wrench, Package, DollarSign, PlusCircle, Clock, TrendingUp, BarChart3 } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import axiosInstance from "../../api/axiosInstance";
-import Badge from "../../components/common/Badge";
-import Button from "../../components/common/Button";
+import Badge from "../../Components/common/Badge";
+import Button from "../../Components/common/Button";
 
 const chartData = [
   { month: "Jan", revenue: 12000, bookings: 4 },

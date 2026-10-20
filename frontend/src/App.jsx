@@ -5,23 +5,23 @@ import Navbar from "./layouts/Navbar";
 import Footer from "./layouts/Footer";
 
 // Auth Pages
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import ForgotPassword from "./pages/auth/ForgotPassword";
+import Login from "./Pages/auth/Login";
+import Register from "./Pages/auth/Register";
+import ForgotPassword from "./Pages/auth/ForgotPassword";
 
 // User Pages
-import LandingPage from "./pages/user/LandingPage";
-import BrowseEquipment from "./pages/user/BrowseEquipment";
-import EquipmentDetails from "./pages/user/EquipmentDetails";
-import MyBookings from "./pages/user/MyBookings";
-import VerificationCenter from "./pages/user/VerificationCenter";
+import LandingPage from "./Pages/user/LandingPage";
+import BrowseEquipment from "./Pages/user/BrowseEquipment";
+import EquipmentDetails from "./Pages/user/EquipmentDetails";
+import MyBookings from "./Pages/user/MyBookings";
+import VerificationCenter from "./Pages/user/VerificationCenter";
 
 // Provider Pages
-import ProviderDashboard from "./pages/provider/ProviderDashboard";
-import AddEquipment from "./pages/provider/AddEquipment";
+import ProviderDashboard from "./Pages/provider/ProviderDashboard";
+import AddEquipment from "./Pages/provider/AddEquipment";
 
 // Admin Pages
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminDashboard from "./Pages/admin/AdminDashboard";
 
 import axiosInstance from "./api/axiosInstance";
 import { loginSuccess } from "./store/slices/authSlice";
