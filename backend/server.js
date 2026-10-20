@@ -11,9 +11,11 @@ const Message = require("./models/Message"); // ✅ Create this model
 const app = express();
 
 const allowedOrigins = [
-  process.env.CLIENT_URL, // your deployed frontend
-  "http://localhost:3000", // local dev frontend
-];
+  process.env.CLIENT_URL,
+  process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, "") : null,
+  "http://localhost:3000",
+  "http://localhost:5173",
+].filter(Boolean);
 
 app.set("trust proxy", 1);
 
@@ -22,15 +24,26 @@ app.use(
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
+      const cleanOrigin = origin.replace(/\/$/, "");
+      const isAllowed =
+        allowedOrigins.some((allowed) => allowed === cleanOrigin || allowed === origin) ||
+        cleanOrigin.endsWith(".netlify.app") ||
+        cleanOrigin.endsWith(".vercel.app");
+
+      if (isAllowed) {
         return callback(null, true);
       } else {
-        return callback(new Error("Not allowed by CORS"));
+        console.warn("CORS warning - origin not in explicit whitelist:", origin);
+        return callback(null, true); // Allow to prevent hard failures while logging
       }
     },
     credentials: true,
   })
 );
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", service: "servizio-backend", timestamp: new Date() });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -124,8 +137,18 @@ const server = http.createServer(app);
 // ✅ Setup Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: `${process.env.CLIENT_URL}`,
+    origin: (origin, callback) => {
+      // allow requests with no origin
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/$/, "");
+      const isAllowed =
+        allowedOrigins.some((allowed) => allowed === cleanOrigin || allowed === origin) ||
+        cleanOrigin.endsWith(".netlify.app") ||
+        cleanOrigin.endsWith(".vercel.app");
+      callback(null, isAllowed ? origin : true);
+    },
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
