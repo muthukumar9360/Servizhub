@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const BusinessList = require("../models/EquipmentDepotListing");
+const BusinessList = require("../models/BusinessList");
 
-const searchHandler = async (req, res) => {
+// 🔍 Search businesses by name / category / subcategory
+router.get("/business", async (req, res) => {
   try {
     const q = req.query.q;
     if (!q || !q.trim()) return res.json([]);
@@ -12,14 +13,13 @@ const searchHandler = async (req, res) => {
     const results = await BusinessList.aggregate([
       {
         $lookup: {
-          from: "Businesses", // ✅ must match collection name
+          from: "Businesses",
           localField: "mainCategoryId",
           foreignField: "_id",
           as: "mainCat",
         },
       },
       { $unwind: { path: "$mainCat", preserveNullAndEmptyArrays: true } },
-
       {
         $addFields: {
           subCat: {
@@ -32,7 +32,6 @@ const searchHandler = async (req, res) => {
         },
       },
       { $unwind: { path: "$subCat", preserveNullAndEmptyArrays: true } },
-
       {
         $match: {
           $or: [
@@ -42,7 +41,6 @@ const searchHandler = async (req, res) => {
           ],
         },
       },
-
       {
         $project: {
           name: 1,
@@ -51,7 +49,6 @@ const searchHandler = async (req, res) => {
           subCategoryName: "$subCat.title",
         },
       },
-
       { $limit: 10 },
     ]);
 
@@ -60,9 +57,21 @@ const searchHandler = async (req, res) => {
     console.error("Search API error:", err);
     res.status(500).json({ message: "Search failed" });
   }
-};
+});
 
-router.get("/equipment-depot", searchHandler);
-router.get("/business", searchHandler);
+// Generic search fallback for /api/search?q=...
+router.get("/", async (req, res) => {
+  const q = req.query.q;
+  if (!q || !q.trim()) return res.json([]);
+  try {
+    const regex = new RegExp(q, "i");
+    const results = await BusinessList.find({
+      $or: [{ name: regex }, { "contactDetails.city": regex }],
+    }).limit(10);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ message: "Search error" });
+  }
+});
 
 module.exports = router;
