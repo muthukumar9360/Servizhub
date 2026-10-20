@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Accurate City</title>
+</head>
+<body>
+<h2>Your Current City</h2>
+<div id="status">Fetching your city...</div>
+
+<script>
+const GEOAPIFY_API_KEY = "1de1bd30775c456398bdb1ca5e02e833"; // Your key
+
+function fetchCity(lat, lon) {
+  const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${GEOAPIFY_API_KEY}`;
+  
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (data.features && data.features.length > 0) {
+        console.log(data);
+        const features = data.features;
+        let city = features[0].properties.city
+
+        document.getElementById('status').textContent = city
+          ? `You are in: ${city}`
+          : `City not found. Coordinates: ${lat}, ${lon}`;
+      } else {
+        document.getElementById('status').textContent = "No city data found.";
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('status').textContent = "Error fetching city data.";
+    });
+}
+// Example coordinates for New York City
+
+// Get current position
+navigator.geolocation.getCurrentPosition(
+  (pos) => {
+    console.log("Latitude:", pos.coords.latitude);
+    console.log("Longitude:", pos.coords.longitude);
+    console.log("Accuracy in meters:", pos.coords.accuracy);
+  },
+  (err) => console.error(err),
+  { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+);
+
+</script>
+</body>
+</html>
