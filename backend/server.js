@@ -112,22 +112,59 @@ app.post("/api/payment/create-order", async (req, res) => {
 });
 
 //hello welcome
-// ✅ Import all your existing routes
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/services", require("./routes/serviceRoutes"));
-app.use("/api/session", require("./routes/sessionRoutes"));
-app.use("/api/guides", require("./routes/guideRoutes"));
-app.use("/api/otp", require("./routes/otpRoutes"));
-app.use("/api/forget", require("./routes/forgetRoutes"));
-app.use("/api/subcategory", require("./routes/subcategoryRoutes"));
-app.use("/api/userprofile", require("./routes/userProfileRoutes"));
-app.use("/api/business", require("./routes/businessRoutes"));
-app.use("/api/businesslist", require("./routes/businesslistRoutes"));
-app.use("/api/chat", require("./routes/messageRoutes"));
-app.use("/api/favourites", require("./routes/favouriteRoutes"));
-app.use("/api/saved", require("./routes/savedRoutes"));
-app.use("/api/search", require("./routes/searchRoutes"));
-app.use("/api/business-email",  require("./routes/businessEmailRoutes"));
+// ✅ Import and mount all routes on both /api and /api/v1 for maximum compatibility
+const authRoutes = require("./routes/authRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
+const sessionRoutes = require("./routes/sessionRoutes");
+const guideRoutes = require("./routes/guideRoutes");
+const otpRoutes = require("./routes/otpRoutes");
+const forgetRoutes = require("./routes/forgetRoutes");
+const subcategoryRoutes = require("./routes/subcategoryRoutes");
+const userProfileRoutes = require("./routes/userProfileRoutes");
+const businessRoutes = require("./routes/businessRoutes");
+const businesslistRoutes = require("./routes/businesslistRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+const favouriteRoutes = require("./routes/favouriteRoutes");
+const savedRoutes = require("./routes/savedRoutes");
+const searchRoutes = require("./routes/searchRoutes");
+const businessEmailRoutes = require("./routes/businessEmailRoutes");
+
+// Standard /api/... routes
+app.use("/api/auth", authRoutes);
+app.use("/api/services", serviceRoutes);
+app.use("/api/session", sessionRoutes);
+app.use("/api/guides", guideRoutes);
+app.use("/api/otp", otpRoutes);
+app.use("/api/forget", forgetRoutes);
+app.use("/api/subcategory", subcategoryRoutes);
+app.use("/api/userprofile", userProfileRoutes);
+app.use("/api/business", businessRoutes);
+app.use("/api/businesslist", businesslistRoutes);
+app.use("/api/chat", messageRoutes);
+app.use("/api/favourites", favouriteRoutes);
+app.use("/api/saved", savedRoutes);
+app.use("/api/search", searchRoutes);
+app.use("/api/business-email", businessEmailRoutes);
+
+// Dual /api/v1/... routes (handles Google OAuth redirects & versioned API clients)
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/services", serviceRoutes);
+app.use("/api/v1/session", sessionRoutes);
+app.use("/api/v1/guides", guideRoutes);
+app.use("/api/v1/otp", otpRoutes);
+app.use("/api/v1/forget", forgetRoutes);
+app.use("/api/v1/subcategory", subcategoryRoutes);
+app.use("/api/v1/userprofile", userProfileRoutes);
+app.use("/api/v1/business", businessRoutes);
+app.use("/api/v1/businesslist", businesslistRoutes);
+app.use("/api/v1/chat", messageRoutes);
+app.use("/api/v1/favourites", favouriteRoutes);
+app.use("/api/v1/saved", savedRoutes);
+app.use("/api/v1/search", searchRoutes);
+app.use("/api/v1/business-email", businessEmailRoutes);
+
+// Direct /auth fallback
+app.use("/auth", authRoutes);
 
 const server = http.createServer(app);
 
