@@ -34,8 +34,9 @@ const PopularServices = () => {
           slidesPerView={3}
           className="mySwiper"
         >
+          {services.map((service, index) => (
             <SwiperSlide
-              key={index}
+              key={service._id || index}
               className="bg-green-500 hover:bg-green-400 hover:text-black text-white rounded-2xl p-4 w-60 shadow-md flex flex-col items-center justify-between transition cursor-pointer"
             >
               <Link to={service._id ? `/services/${service._id}` : "#"} className="w-full h-full flex flex-col items-center justify-between">
@@ -47,6 +48,7 @@ const PopularServices = () => {
                 />
               </Link>
             </SwiperSlide>
+          ))}
         </Swiper>
       ) : (
         <p className="text-gray-500">Loading services...</p>

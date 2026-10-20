@@ -23,13 +23,18 @@ const HeroSection = () => {
   useEffect(() => {
     // Fetch logged-in user
     fetch(`${api}/session/me`, { credentials: "include" })
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : { user: null }))
       .then((data) => {
-        if (data.user) {
+        if (data && data.user) {
           setUsername(data.user.username);
+        } else {
+          setUsername("Guest");
         }
       })
-      .catch((err) => console.error("Error fetching session:", err));
+      .catch((err) => {
+        console.warn("Guest session:", err.message);
+        setUsername("Guest");
+      });
 
     // Fetch services with cache
     fetchWithCache(`${api}/services`)
