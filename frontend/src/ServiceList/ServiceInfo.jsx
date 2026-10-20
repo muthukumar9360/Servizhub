@@ -107,8 +107,7 @@ const ServiceInfo = () => {
         <>
             {/* Navbar */}
             <nav className="flex justify-evenly items-center py-4 bg-white text-black border-b-2 border-gray-400 shadow-2xl fixed top-0 left-0 w-full z-10">
-                <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
-                    <img src="/logo.png" alt="Servizhub" className="w-10 h-10 object-contain rounded-full shadow-md" />
+                <Link to="/" className="flex items-center hover:opacity-90 transition">
                     <span className="text-4xl font-bold text-green-600">Servizhub</span>
                 </Link>
 

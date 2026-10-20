@@ -79,8 +79,7 @@ const BusinessHeaderSection = () => {
       <div className="flex items-center justify-between mx-5 py-5">
 
         {/* 🔵 Logo */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition">
-          <img src="/logo.png" alt="Servizhub" className="w-10 h-10 object-contain rounded-full shadow-md" />
+        <Link to="/" className="flex items-center hover:opacity-90 transition">
           <h1 className="text-4xl font-extrabold tracking-tight">
             <span className="text-green-600">Serviz</span>
             <span className="text-blue-600">hub</span>
