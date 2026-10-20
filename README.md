@@ -25,7 +25,6 @@
 - [API Reference](#-api-reference)
 - [Getting Started & Local Setup](#-getting-started--local-setup)
 - [Demo Credentials](#-demo-credentials)
-- [Deleting Old Standalone Repositories](#-deleting-old-standalone-repositories)
 
 ---
 
@@ -436,27 +435,6 @@ docker-compose up --build
 | **Super Admin** | `admin@example.com` | `SuperAdmin@123` | Full console, KYC document queue, business approvals, platform analytics |
 | **Service Provider** | `provider@example.com` | `Provider@123` | Provider dashboard, add/edit business listings, upload KYC documents |
 | **Customer / User** | `user@example.com` | `User@123` | Browse categories, submit inquiries, bookmark businesses, leave reviews |
-
----
-
-## 🗑️ Deleting Old Standalone Repositories
-
-Now that both the `frontend` and `backend` codebases and **all historical commits** have been successfully merged into [https://github.com/muthukumar9360/Servizio](https://github.com/muthukumar9360/Servizio):
-
-### Can you safely delete `servizio_backend` on GitHub?
-**YES, 100% safely.**
-- All backend files now reside in `Servizio/backend/`.
-- Every previous commit from `servizio_backend` is preserved in the git history of `Servizio`.
-- The merged repository is active and verified on GitHub.
-
-### How to delete `servizio_backend` on GitHub:
-1. Go to your browser and open: `https://github.com/muthukumar9360/servizio_backend`
-2. Click on the **Settings** tab (gear icon at the top right).
-3. Scroll down to the bottom to the **Danger Zone**.
-4. Click **Delete this repository**.
-5. Type `muthukumar9360/servizio_backend` to confirm and click **I understand the consequences, delete this repository**.
-
-*(Deleting `servizio_backend` will have **zero** negative impact on your unified `Servizio` repository).*
 
 ---
 
