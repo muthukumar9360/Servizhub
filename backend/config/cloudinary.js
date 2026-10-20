@@ -9,7 +9,7 @@ cloudinary.config({
 /**
  * Upload a local file or buffer stream to Cloudinary
  */
-const uploadToCloudinary = async (filePath, folder = "servizio_equipment") => {
+const uploadToCloudinary = async (filePath, folder = "servizio_uploads") => {
   try {
     const result = await cloudinary.uploader.upload(filePath, {
       folder: `servizio/${folder}`,

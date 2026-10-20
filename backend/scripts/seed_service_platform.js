@@ -3,15 +3,10 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 const User = require("../models/User");
-const BusinessCategory = require("../models/EquipmentDepotCategory");
-const BusinessList = require("../models/EquipmentDepotListing");
-const Service = require("../models/EquipmentCategory");
-const ServiceListing = require("../models/EquipmentListing");
+const BusinessCategory = require("../models/Business");
+const BusinessList = require("../models/BusinessList");
 const Guide = require("../models/Guide");
-const PlatformSetting = require("../models/PlatformSetting");
-const ProviderProfile = require("../models/ProviderProfile");
-const Review = require("../models/Review");
-const Notification = require("../models/Notification");
+const Service = require("../models/Service");
 
 const seedServicePlatform = async () => {
   try {
@@ -20,27 +15,15 @@ const seedServicePlatform = async () => {
     await mongoose.connect(mongoUri);
     console.log("Connected successfully!");
 
-    console.log("Cleaning old database collections...");
-    await Promise.all([
-      User.deleteMany({}),
-      BusinessCategory.deleteMany({}),
-      BusinessList.deleteMany({}),
-      Service.deleteMany({}),
-      ServiceListing.deleteMany({}),
-      Guide.deleteMany({}),
-      PlatformSetting.deleteMany({}),
-      ProviderProfile.deleteMany({}),
-      Review.deleteMany({}),
-      Notification.deleteMany({}),
-    ]);
-
-    // 1. Platform Settings
-    await PlatformSetting.create({
-      commissionPercentage: 10,
-      defaultCancellationPolicy: "Free cancellation up to 24 hours prior to service scheduled time.",
-      defaultSecurityDepositRate: 0,
-      minVerificationForRentals: true,
-    });
+    console.log("Cleaning old database collections and stale indexes...");
+    const collectionsToDrop = ["services", "Businesses", "businesses", "Businesslist", "businesslists", "guides", "users"];
+    for (const c of collectionsToDrop) {
+      try {
+        await mongoose.connection.collection(c).drop();
+      } catch (e) {
+        // ignore if collection does not exist
+      }
+    }
 
     // 2. Users: Super Admin, Providers, Customers
     console.log("Creating Verified Platform Users...");
@@ -66,15 +49,6 @@ const seedServicePlatform = async () => {
       status: "ACTIVE",
       trustProfile: { trustScore: 98, trustTier: "TOP_RATED" },
       verification: { emailVerified: true, phoneVerified: true, identityVerified: true, addressVerified: true, adminApproved: true },
-    });
-
-    await ProviderProfile.create({
-      user: primaryProvider._id,
-      businessName: "Servizio Premier Service Solutions",
-      contactPhone: primaryProvider.phone,
-      contactEmail: primaryProvider.email,
-      status: "APPROVED",
-      businessAddress: { city: "Chennai", state: "Tamil Nadu", pincode: "600001" },
     });
 
     const primaryCustomer = await User.create({
@@ -113,14 +87,6 @@ const seedServicePlatform = async () => {
         status: "ACTIVE",
         trustProfile: { trustScore: 94, trustTier: "TOP_RATED" },
         verification: { emailVerified: true, phoneVerified: true, identityVerified: true, addressVerified: true, adminApproved: true },
-      });
-      await ProviderProfile.create({
-        user: u._id,
-        businessName: p.name,
-        contactPhone: p.phone,
-        contactEmail: p.email,
-        status: "APPROVED",
-        businessAddress: { city: p.city, state: "Tamil Nadu", pincode: "600001" },
       });
       providerAccounts.push(u);
     }
@@ -265,17 +231,15 @@ const seedServicePlatform = async () => {
 
       // Mirror into Service model for consistency
       await Service.create({
-        mainCategory: cat.mainCategory,
-        slug: cat.mainCategory.toLowerCase().replace(/[^a-z0-9]/g, "-"),
+        title: cat.mainCategory,
         description: cat.description,
         homeImage: cat.homeImage,
-        subCategories: cat.subCategories.map((sub, idx) => ({
+        subcategories: cat.subCategories.map((sub, idx) => ({
           _id: c.subCategories[idx]._id,
           title: sub.title,
           description: sub.description,
           image: sub.image,
         })),
-        isActive: true,
       });
     }
 
@@ -520,35 +484,6 @@ const seedServicePlatform = async () => {
         tags: item.tags,
       });
 
-      // Also create a listing in ServiceListing for direct booking/search
-      await ServiceListing.create({
-        name: `${item.name} - Service Package`,
-        slug: item.name.toLowerCase().replace(/[^a-z0-9]/g, "-"),
-        qrCodeIdentifier: `SRV-${Math.floor(1000 + Math.random() * 9000)}`,
-        serialNumber: `SVC-${Math.floor(100000 + Math.random() * 900000)}`,
-        description: item.overview.description,
-        category: cat._id,
-        subCategoryId: sub._id,
-        owner: provider._id,
-        brand: item.name.split(" ")[0],
-        modelName: "Professional Service",
-        specifications: [
-          { key: "Service Type", value: sub.title },
-          { key: "Rating", value: `${item.ratings.overall} / 5.0` },
-          { key: "City", value: item.locationDetails.city },
-        ],
-        images: [{ url: item.media.mainImages[0].url, isPrimary: true, order: 0 }],
-        condition: "EXCELLENT",
-        healthScore: 98,
-        rentalPrice: 799,
-        securityDeposit: 0,
-        quantity: 10,
-        location: item.locationDetails,
-        availabilityStatus: "AVAILABLE",
-        approvalStatus: "APPROVED",
-        averageRating: item.ratings.overall,
-        totalReviews: item.ratings.total,
-      });
     }
 
     // 5. Guides

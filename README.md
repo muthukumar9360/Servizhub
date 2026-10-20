@@ -78,12 +78,12 @@ graph TD
 
     subgraph APITier["Express.js API Layer (Backend :5024)"]
         AuthRoutes["/api/auth & /api/session"]
-        CategoryRoutes["/api/equipment-depot-categories"]
-        ListingRoutes["/api/equipment-depot-listings"]
-        SearchRoutes["/api/search/business"]
-        BookingRoutes["/api/bookings & /api/returns"]
+        BusinessRoutes["/api/business & /api/services"]
+        ListingRoutes["/api/businesslist"]
+        SearchRoutes["/api/search"]
+        ChatRoutes["/api/chat (Socket.IO)"]
         InteractRoutes["/api/favourites & /api/saved"]
-        AdminRoutes["/api/admin & /api/documents"]
+        PaymentRoutes["/api/payment/create-order"]
     end
 
     subgraph DataTier["Data Storage & External Cloud Services"]
@@ -100,12 +100,12 @@ graph TD
     Session --> AuthMid
 
     AuthMid --> AuthRoutes
-    AuthMid --> CategoryRoutes
+    AuthMid --> BusinessRoutes
     AuthMid --> ListingRoutes
     AuthMid --> SearchRoutes
-    AuthMid --> BookingRoutes
+    AuthMid --> ChatRoutes
     AuthMid --> InteractRoutes
-    AuthMid --> AdminRoutes
+    AuthMid --> PaymentRoutes
 
     AuthRoutes --> MongoDB
     CategoryRoutes --> MongoDB
@@ -142,15 +142,15 @@ sequenceDiagram
     DB-->>API: Return matching verified service listings
     API-->>Frontend: Render business cards with ratings & contact details
     Customer->>Frontend: Click business profile (e.g. "CoolBreeze AC Care")
-    Frontend->>API: GET /api/equipment-depot-listings/:id
+    Frontend->>API: GET /api/businesslist/:id
     API->>DB: Query business details, facilities & media
     DB-->>API: Return complete profile
     API-->>Frontend: Display services, photos, operating hours & address
     Customer->>Frontend: Submit service inquiry / request booking
-    Frontend->>API: POST /api/equipment-depot-email/send-otp
+    Frontend->>API: POST /api/business-email/send-otp
     API->>Customer: Email/SMS OTP code
     Customer->>Frontend: Enter 6-digit OTP
-    Frontend->>API: POST /api/equipment-depot-email/verify-otp
+    Frontend->>API: POST /api/business-email/verify-otp
     API->>Provider: Notify provider of verified customer inquiry
     API-->>Frontend: Inquiry confirmed with booking receipt PDF
 ```
@@ -185,7 +185,7 @@ sequenceDiagram
     Frontend->>API: PUT /api/admin/verifications/:id/approve
     API->>DB: Set provider status="APPROVED" & verified=true
     Provider->>Frontend: Add business listing (AddBusinessPage)
-    Frontend->>API: POST /api/equipment-depot-listings/add
+    Frontend->>API: POST /api/businesslist/add
     API->>DB: Store in Businesslist with "Verified" badge
     API-->>Provider: Business listing is now live in marketplace!
 ```
@@ -266,9 +266,7 @@ Servizio/
 │   ├── models/                          # Mongoose schemas (Business, User, Service, etc.)
 │   ├── routes/                          # Express REST API route definitions
 │   ├── scripts/                         # Master database seeding scripts
-│   │   ├── seed_service_platform.js     # Master Service Provider Platform Seeder (Active)
-│   │   ├── seed_master_2026.js          # Master Seeder
-│   │   └── seed_equipment_data.js       # Reference Seeder
+│   │   └── seed_service_platform.js     # Master Service Provider Platform Seeder (Active)
 │   ├── utils/                           # Nodemailer mailer, PDF generator, OTP generator
 │   ├── validations/                     # Express-validator request sanitizers
 │   ├── .env.example                     # Backend environment variable template
@@ -319,12 +317,13 @@ Servizio/
 ### 2. Service Categories & Business Listings
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/equipment-depot-categories` | Fetches all service verticals and subcategories |
-| `GET` | `/api/equipment-depot-categories/subcategory/:id` | Returns subcategory details and associated businesses |
-| `GET` | `/api/equipment-depot-listings/:id` | Fetches full business profile, media, hours & facilities |
-| `POST` | `/api/equipment-depot-listings/add` | Creates a new verified business listing |
-| `GET` | `/api/search/business?q=:query` | Live keyword search across business names & services |
+| `GET` | `/api/business` | Fetches all service verticals and subcategories |
+| `GET` | `/api/services` | Fetches local service listings |
+| `GET` | `/api/businesslist/:id` | Fetches full business profile, media, hours & facilities |
+| `POST` | `/api/businesslist/add` | Creates a new verified business listing |
+| `GET` | `/api/search?q=:query` | Live keyword search across business names & services |
 | `GET` | `/api/guides` | Returns consumer service hiring guides |
+| `POST` | `/api/payment/create-order` | Initiates Razorpay payment order for bookings |
 
 ### 3. User Bookmarks & Interactions
 | Method | Endpoint | Description |

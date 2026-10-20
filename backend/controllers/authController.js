@@ -55,10 +55,10 @@ const register = asyncHandler(async (req, res) => {
   // Send Email OTP
   await sendMail({
     to: email,
-    subject: "Servizio Equipment Rental - Verify Your Email",
+    subject: "Servizio - Verify Your Email",
     html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
-        <h2>Welcome to Servizio Equipment Rental!</h2>
+        <h2>Welcome to Servizio Local Services!</h2>
         <p>Hello ${fullName},</p>
         <p>Your 6-digit email verification OTP is:</p>
         <h1 style="color: #4F46E5; letter-spacing: 4px;">${rawEmailOtp}</h1>
@@ -173,7 +173,7 @@ const resendEmailOtp = asyncHandler(async (req, res) => {
 
   await sendMail({
     to: tempUser.email,
-    subject: "Servizio Equipment Rental - Resent Email OTP",
+    subject: "Servizio - Resent Email OTP",
     html: `<p>Your new email verification OTP is: <b>${rawEmailOtp}</b></p>`,
   });
 
@@ -553,7 +553,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   await sendMail({
     to: user.email,
-    subject: "Servizio Equipment Rental - Password Reset OTP",
+    subject: "Servizio - Password Reset OTP",
     html: `<p>Your password reset OTP code is: <b style="font-size: 20px; color: #4F46E5;">${rawOtp}</b></p><p>Valid for 10 minutes.</p>`,
   });
 

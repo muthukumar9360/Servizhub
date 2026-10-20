@@ -1,143 +1,72 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import Navbar from "./layouts/Navbar";
-import Footer from "./layouts/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Auth Pages
-import Login from "./Pages/auth/Login";
-import Register from "./Pages/auth/Register";
-import ForgotPassword from "./Pages/auth/ForgotPassword";
+import HeroSection from "./HomeSections/HeroSection";
+import FooterSection from "./HomeSections/FooterSection";
+import CopySection from "./HomeSections/CopySection";
+import RemainingSection from "./HomeSections/RemainingSection";
+import PopularServices from "./HomeSections/PopularServices";
+import ServicesSection from "./HomeSections/ServicesSection";
+import CombinedSection from "./HomeSections/CombinedSection";
+import ImageGallery from "./HomeSections/ImageGallery";
+import LoginSignup from "./AuthSections/LoginSignup";
+import LoginForm from "./AuthSections/LoginForm";
+import SignupForm from "./AuthSections/SignupForm";
+import ForgetForm from "./AuthSections/ForgetForm";
+import OtpPage from "./AuthSections/OtpPage";
+import ServiceInfo from "./ServiceList/ServiceInfo";
+import SubcategoryInfo from "./ServiceList/SubcategoryInfo";
+import OfflineToggleButton from "./Components/OfflineToggleButton";
+import UserProfile from "./ServiceList/UserProfile";
+import JustDialPages from "./Pages/JustDialPages";
+import SubcategoryListingPage from "./JustDialHome/ServicesPages/SubCategoryListingPage";
+import SubServicePage from "./JustDialHome/ServicesPages/SubServicePage";
+import ChatPage from "./ChatBox/ChatPage";
+import CompleteProfile from "./JustDialHome/ServicesPages/CompleteProfile";
+import MyBusinessPage from "./JustDialHome/ServicesPages/MyBusinessPage";
+import AddBusinessPage from "./JustDialHome/ServicesPages/AddBusinessPage";
+import AllCategoriesPage from "./JustDialHome/AllCategoriesPage";
+import ProfileForm from "./JustDialHome/ServicesPages/ProfileForm";
 
-// User Pages
-import LandingPage from "./Pages/user/LandingPage";
-import BrowseEquipment from "./Pages/user/BrowseEquipment";
-import EquipmentDetails from "./Pages/user/EquipmentDetails";
-import MyBookings from "./Pages/user/MyBookings";
-import VerificationCenter from "./Pages/user/VerificationCenter";
-
-// Provider Pages
-import ProviderDashboard from "./Pages/provider/ProviderDashboard";
-import AddEquipment from "./Pages/provider/AddEquipment";
-
-// Admin Pages
-import AdminDashboard from "./Pages/admin/AdminDashboard";
-
-import axiosInstance from "./api/axiosInstance";
-import { loginSuccess } from "./store/slices/authSlice";
-
-// Protected Route Wrapper
-const ProtectedRoute = ({ children, allowedRoles = [] }) => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user?.role)) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
-};
+function HomePage() {
+  return (
+    <>
+      <OfflineToggleButton />
+      <HeroSection />
+      <ServicesSection />
+      <PopularServices />
+      <CopySection />
+      <CombinedSection />
+      <ImageGallery />
+      <RemainingSection />
+      <FooterSection />
+    </>
+  );
+}
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Restore authenticated session on app load if token exists
-    const checkAuthSession = async () => {
-      try {
-        const response = await axiosInstance.get("/auth/me");
-        if (response.data?.data) {
-          const token = localStorage.getItem("accessToken");
-          dispatch(loginSuccess({ user: response.data.data, accessToken: token }));
-        }
-      } catch (e) {
-        // Session expired
-      }
-    };
-    if (localStorage.getItem("accessToken")) {
-      checkAuthSession();
-    }
-  }, [dispatch]);
-
   return (
     <Router>
-      <div className="flex flex-col min-h-screen font-sans bg-gray-50 text-gray-900 selection:bg-indigo-500 selection:text-white">
-        <Navbar />
-
-        <main className="flex-1">
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/browse" element={<BrowseEquipment />} />
-            <Route path="/equipment/:id" element={<EquipmentDetails />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-
-            {/* Authenticated Renter Routes */}
-            <Route
-              path="/my-bookings"
-              element={
-                <ProtectedRoute>
-                  <MyBookings />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <VerificationCenter />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/verification"
-              element={
-                <ProtectedRoute>
-                  <VerificationCenter />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Provider Routes */}
-            <Route
-              path="/provider/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={["PROVIDER", "ADMIN", "SUPER_ADMIN"]}>
-                  <ProviderDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/provider/add-equipment"
-              element={
-                <ProtectedRoute allowedRoles={["PROVIDER", "ADMIN", "SUPER_ADMIN"]}>
-                  <AddEquipment />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Admin Routes */}
-            <Route
-              path="/admin/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={["ADMIN", "SUPER_ADMIN"]}>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Fallback 404 Route */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/loginsignup" element={<LoginSignup />} />
+        <Route path="/loginsignup/login" element={<LoginForm />} />
+        <Route path="/loginsignup/signup" element={<SignupForm />} />
+        <Route path="/loginsignup/forgot" element={<ForgetForm />} />
+        <Route path="/loginsignup/otp" element={<OtpPage />} />
+        <Route path="/services/:id" element={<ServiceInfo />} />
+        <Route path="/subcategory/:subId" element={<SubcategoryInfo />} />
+        <Route path="/userprofile/:userId" element={<UserProfile />} />
+        <Route path="/JustDialPages" element={<JustDialPages />} />
+        <Route path="/Businesssubcategory/:id" element={<SubcategoryListingPage />} />
+        <Route path="/SubcategoryDetails/:id" element={<SubServicePage />} />
+        <Route path="/Chat/:providerId" element={<ChatPage />} />
+        <Route path="/justdial/completeprofile" element={<CompleteProfile />} />
+        <Route path="/mybusinesslist/:userId" element={<MyBusinessPage />} />
+        <Route path="/addbusiness/:userId" element={<AddBusinessPage />} />
+        <Route path="/all-categories" element={<AllCategoriesPage />} />
+        <Route path="/profile-form" element={<ProfileForm />} />
+        <Route path="*" element={<div className="p-8 text-center text-xl">404 - Page Not Found</div>} />
+      </Routes>
     </Router>
   );
 }

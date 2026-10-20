@@ -19,7 +19,7 @@ const sendMail = async ({ to, subject, text, html, attachments = [] }) => {
   try {
     const transporter = createTransporter();
     const info = await transporter.sendMail({
-      from: `"Servizio Equipment Rental" <${process.env.EMAIL_USER}>`,
+      from: `"Servizio Local Services Platform" <${process.env.EMAIL_USER}>`,
       to,
       subject,
       text,

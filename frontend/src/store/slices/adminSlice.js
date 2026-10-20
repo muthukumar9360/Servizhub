@@ -4,8 +4,6 @@ const initialState = {
   stats: null,
   users: [],
   pendingDocuments: [],
-  pendingEquipments: [],
-  damageReports: [],
   auditLogs: [],
   loading: false,
   error: null,
@@ -30,14 +28,6 @@ const adminSlice = createSlice({
       state.pendingDocuments = action.payload;
       state.loading = false;
     },
-    setPendingEquipments: (state, action) => {
-      state.pendingEquipments = action.payload;
-      state.loading = false;
-    },
-    setAdminDamageReports: (state, action) => {
-      state.damageReports = action.payload;
-      state.loading = false;
-    },
     setAuditLogs: (state, action) => {
       state.auditLogs = action.payload;
       state.loading = false;
@@ -50,8 +40,6 @@ export const {
   setAdminStats,
   setAdminUsers,
   setPendingDocuments,
-  setPendingEquipments,
-  setAdminDamageReports,
   setAuditLogs,
 } = adminSlice.actions;
 
