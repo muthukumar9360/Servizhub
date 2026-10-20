@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "servizio-hub",
     "public": "frontend/dist",
     "ignore": [
       "firebase.json",
