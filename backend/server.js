@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+const connectMongo = require("connect-mongo");
+const MongoStore = connectMongo.default || connectMongo.MongoStore || connectMongo;
 require("dotenv").config();
 const connectDB = require("./config/db");
 const Razorpay = require("razorpay");
@@ -49,29 +51,24 @@ app.get("/health", (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       secure: true,       // since Render uses HTTPS
-//       httpOnly: true,
-//       sameSite: "none"    // required for cross-origin cookies
-//     }
-//   })
-// );
+const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "servizio_master_secret_session_key",
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: mongoUri,
+      collectionName: "sessions",
+      ttl: 14 * 24 * 60 * 60, // 14 days
+    }),
     cookie: {
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
-    }
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 14 * 24 * 60 * 60 * 1000,
+    },
   })
 );
 
