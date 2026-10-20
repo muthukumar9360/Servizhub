@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "Servizio Equipment Rental Platform API",
+    "description": "Production V1 REST APIs for Servizio Equipment Rental Marketplace",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User (TempReg)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Karthik Renter\",\n  \"username\": \"karthikrenter2\",\n  \"email\": \"karthik2@servizio.com\",\n  \"phone\": \"9876543299\",\n  \"password\": \"User@123\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "Verify Email OTP",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tempRegistrationId\": \"<TEMP_REG_ID>\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/verify-email", "host": ["{{baseUrl}}"], "path": ["auth", "verify-email"] }
+          }
+        },
+        {
+          "name": "Verify Phone OTP & Create User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tempRegistrationId\": \"<TEMP_REG_ID>\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/verify-phone", "host": ["{{baseUrl}}"], "path": ["auth", "verify-phone"] }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"user@servizio.com\",\n  \"password\": \"User@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Equipment",
+      "item": [
+        {
+          "name": "Browse Equipment Listings",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/equipments?page=1&limit=12", "host": ["{{baseUrl}}"], "path": ["equipments"] }
+          }
+        },
+        {
+          "name": "Get Equipment Details",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/equipments/<EQUIPMENT_ID>", "host": ["{{baseUrl}}"], "path": ["equipments", "<EQUIPMENT_ID>"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Check Real-Time Availability Overlap",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/bookings/check-availability?equipmentId=<EQUIPMENT_ID>&startDate=2026-08-15&endDate=2026-08-20",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings", "check-availability"]
+            }
+          }
+        },
+        {
+          "name": "Create Equipment Rental Booking",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipmentId\": \"<EQUIPMENT_ID>\",\n  \"startDate\": \"2026-08-15T00:00:00.000Z\",\n  \"endDate\": \"2026-08-20T00:00:00.000Z\",\n  \"pickupDetails\": \"Chennai Depot Yard\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/bookings", "host": ["{{baseUrl}}"], "path": ["bookings"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5024/api/v1" }
+  ]
+}

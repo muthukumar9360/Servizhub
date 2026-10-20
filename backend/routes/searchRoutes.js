@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const BusinessList = require("../models/BusinessList");
+const BusinessList = require("../models/EquipmentDepotListing");
 
-// 🔍 Search businesses by name / category / subcategory
-router.get("/business", async (req, res) => {
+const searchHandler = async (req, res) => {
   try {
     const q = req.query.q;
     if (!q || !q.trim()) return res.json([]);
@@ -61,6 +60,9 @@ router.get("/business", async (req, res) => {
     console.error("Search API error:", err);
     res.status(500).json({ message: "Search failed" });
   }
-});
+};
+
+router.get("/equipment-depot", searchHandler);
+router.get("/business", searchHandler);
 
 module.exports = router;

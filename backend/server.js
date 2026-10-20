@@ -1,182 +1,142 @@
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
+const path = require("path");
 require("dotenv").config();
 const connectDB = require("./config/db");
-const Razorpay = require("razorpay");
-const http = require("http");
-const { Server } = require("socket.io");
-const Message = require("./models/Message"); // ✅ Create this model
+const errorHandler = require("./middleware/errorHandler");
+const { apiLimiter } = require("./middleware/rateLimiter");
+
+// Import Route Handlers
+const authRoutes = require("./routes/authRoutes");
+const documentRoutes = require("./routes/documentRoutes");
+const equipmentRoutes = require("./routes/equipmentRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const returnDamageRoutes = require("./routes/returnDamageRoutes");
+const userInteractionRoutes = require("./routes/userInteractionRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const session = require("express-session");
+const inspectionRoutes = require("./routes/inspectionRoutes");
+const maintenanceRoutes = require("./routes/maintenanceRoutes");
+const equipmentDepotCategoryRoutes = require("./routes/equipmentDepotCategoryRoutes");
+const equipmentDepotListingRoutes = require("./routes/equipmentDepotListingRoutes");
+const equipmentDepotEmailRoutes = require("./routes/equipmentDepotEmailRoutes");
+const equipmentServiceRoutes = require("./routes/equipmentServiceRoutes");
+const equipmentSubcategoryRoutes = require("./routes/equipmentSubcategoryRoutes");
+const equipmentOwnerProfileRoutes = require("./routes/equipmentOwnerProfileRoutes");
+const favouriteRoutes = require("./routes/favouriteRoutes");
+const savedRoutes = require("./routes/savedRoutes");
+const searchRoutes = require("./routes/searchRoutes");
+const guideRoutes = require("./routes/guideRoutes");
+const sessionRoutes = require("./routes/sessionRoutes");
+const otpRoutes = require("./routes/otpRoutes");
+const forgetRoutes = require("./routes/forgetRoutes");
+const messageRoutes = require("./routes/messageRoutes");
 
 const app = express();
 
-const allowedOrigins = [
-  process.env.CLIENT_URL, // your deployed frontend
-  "http://localhost:3000", // local dev frontend
-];
-
+// Security Middlewares
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.set("trust proxy", 1);
+
+const allowedOrigins = [
+  process.env.CLIENT_URL || "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
       }
+      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
   })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(cookieParser());
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       secure: true,       // since Render uses HTTPS
-//       httpOnly: true,
-//       sameSite: "none"    // required for cross-origin cookies
-//     }
-//   })
-// );
-
+// Express Session Support
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "servizio_session_secret_key",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
-    }
+      secure: false,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    },
   })
 );
 
+// Rate Limiting
+app.use("/api/", apiLimiter);
 
-// ✅ Connect to DB
+// Serve static uploads
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Connect to MongoDB
 connectDB();
 
-// ✅ Razorpay setup
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
+// Mount routes on both /api/v1 and /api for frontend compatibility
+const registerRoutes = (prefix) => {
+  // Auth & User
+  app.use(`${prefix}/auth`, authRoutes);
+  app.use(`${prefix}/session`, sessionRoutes);
+  app.use(`${prefix}/otp`, otpRoutes);
+  app.use(`${prefix}/forget`, forgetRoutes);
+  app.use(`${prefix}/documents`, documentRoutes);
+  app.use(`${prefix}/interactions`, userInteractionRoutes);
+  app.use(`${prefix}/admin`, adminRoutes);
 
-app.post("/api/payment/create-order", async (req, res) => {
-  try {
-    const { amount } = req.body;
+  // Service Provider & Businesses
+  app.use(`${prefix}/equipment-depot-categories`, equipmentDepotCategoryRoutes);
+  app.use(`${prefix}/business-categories`, equipmentDepotCategoryRoutes);
+  app.use(`${prefix}/equipment-depot-listings`, equipmentDepotListingRoutes);
+  app.use(`${prefix}/business-listings`, equipmentDepotListingRoutes);
+  app.use(`${prefix}/equipment-depot-email`, equipmentDepotEmailRoutes);
+  app.use(`${prefix}/equipment-services`, equipmentServiceRoutes);
+  app.use(`${prefix}/equipment-subcategory`, equipmentSubcategoryRoutes);
+  app.use(`${prefix}/equipment-owner-profile`, equipmentOwnerProfileRoutes);
+  app.use(`${prefix}/favourites`, favouriteRoutes);
+  app.use(`${prefix}/saved`, savedRoutes);
+  app.use(`${prefix}/search`, searchRoutes);
+  app.use(`${prefix}/guides`, guideRoutes);
+  app.use(`${prefix}/messages`, messageRoutes);
 
-    if (!amount || isNaN(amount)) {
-      return res.status(400).json({ error: "Invalid amount" });
-    }
+  // Core Service Listing & Bookings
+  app.use(`${prefix}/equipments`, equipmentRoutes);
+  app.use(`${prefix}/categories`, categoryRoutes);
+  app.use(`${prefix}/bookings`, bookingRoutes);
+  app.use(`${prefix}/returns`, returnDamageRoutes);
+  app.use(`${prefix}/inspections`, inspectionRoutes);
+  app.use(`${prefix}/maintenance`, maintenanceRoutes);
 
-    // ✅ Correct order creation
-    const options = {
-      amount: Math.round(amount * 100), // amount in paise
-      currency: "INR",
-      receipt: "receipt_" + Date.now(),
-      payment_capture: 1,
-      notes: {
-        payment_for: "Freelance Marketplace",
-      },
-    };
-
-    const order = await razorpay.orders.create(options);
-    console.log("✅ Razorpay order created:", order);
-    return res.json({ order, key: process.env.RAZORPAY_KEY_ID });
-  } catch (err) {
-    console.error("❌ Razorpay API Error:", err);
-    return res
-      .status(500)
-      .json({ error: err.message || "Failed to create order" });
-  }
-});
-
-//hello welcome
-// ✅ Import all your existing routes
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/services", require("./routes/serviceRoutes"));
-app.use("/api/session", require("./routes/sessionRoutes"));
-app.use("/api/guides", require("./routes/guideRoutes"));
-app.use("/api/otp", require("./routes/otpRoutes"));
-app.use("/api/forget", require("./routes/forgetRoutes"));
-app.use("/api/subcategory", require("./routes/subcategoryRoutes"));
-app.use("/api/userprofile", require("./routes/userProfileRoutes"));
-app.use("/api/business", require("./routes/businessRoutes"));
-app.use("/api/businesslist", require("./routes/businesslistRoutes"));
-app.use("/api/chat", require("./routes/messageRoutes"));
-app.use("/api/favourites", require("./routes/favouriteRoutes"));
-app.use("/api/saved", require("./routes/savedRoutes"));
-app.use("/api/search", require("./routes/searchRoutes"));
-app.use("/api/business-email",  require("./routes/businessEmailRoutes"));
-
-const server = http.createServer(app);
-
-// ✅ Setup Socket.IO
-const io = new Server(server, {
-  cors: {
-    origin: `${process.env.CLIENT_URL}`,
-    methods: ["GET", "POST"],
-  },
-});
-
-// ✅ Socket.IO connection
-io.on("connection", (socket) => {
-  console.log("🟢 User connected:", socket.id);
-
-  // When user joins a chat room
-  socket.on("joinRoom", ({ senderId, receiverId }) => {
-    const room = [senderId, receiverId].sort().join("_");
-    socket.join(room);
-    console.log(`User joined room: ${room}`);
+  app.get(`${prefix}/health`, (req, res) => {
+    res.status(200).json({ status: "OK", timestamp: new Date(), message: "Servizio API is healthy" });
   });
+};
 
-  // When a message is sent
-  socket.on("sendMessage", async ({ senderId, receiverId, text }) => {
-    try {
-      const message = new Message({ senderId, receiverId, text });
-      await message.save();
-      console.log("✅ Message saved:", message);
-      const room = [senderId, receiverId].sort().join("_");
-      io.to(room).emit("receiveMessage", message); // Send message to both users
-    } catch (err) {
-      console.error("❌ Error saving message:", err);
-    }
-  });
+registerRoutes("/api/v1");
+registerRoutes("/api");
 
-  socket.on("disconnect", () => {
-    console.log("🔴 User disconnected:", socket.id);
-  });
-});
+// Global Error Handler
+app.use(errorHandler);
 
-// ✅ REST API to fetch chat messages between two users
-app.get("/api/chat/:senderId/:receiverId", async (req, res) => {
-  const { senderId, receiverId } = req.params;
-
-  try {
-    const messages = await Message.find({
-      $or: [
-        { senderId, receiverId },
-        { senderId: receiverId, receiverId: senderId },
-      ],
-    }).sort({ createdAt: 1 });
-    res.json(messages);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to load messages" });
-  }
-});
-
-// ✅ Start server
 const PORT = process.env.PORT || 5024;
-server.listen(PORT, () =>
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
-);
+
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Servizio Master Equipment Platform Backend running on port ${PORT}`);
+    console.log(`📡 API Base URL: http://localhost:${PORT}/api/v1`);
+  });
+}
+
+module.exports = app;
