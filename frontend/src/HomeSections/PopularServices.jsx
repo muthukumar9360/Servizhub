@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -33,19 +34,19 @@ const PopularServices = () => {
           slidesPerView={3}
           className="mySwiper"
         >
-          {services.map((service, index) => (
             <SwiperSlide
               key={index}
-              className="bg-green-500 hover:bg-green-300 hover:text-black text-white rounded-2xl p-4 w-60 shadow-md flex flex-col items-center justify-between"
+              className="bg-green-500 hover:bg-green-400 hover:text-black text-white rounded-2xl p-4 w-60 shadow-md flex flex-col items-center justify-between transition cursor-pointer"
             >
-              <h3 className="font-bold text-lg mb-3">{service.title}</h3>
-              <img
-                src={service.homeImage} // fallback image
-                className="rounded-xl"
-                alt={service.homeImage}
-              />
+              <Link to={service._id ? `/services/${service._id}` : "#"} className="w-full h-full flex flex-col items-center justify-between">
+                <h3 className="font-bold text-lg mb-3 text-center">{service.title}</h3>
+                <img
+                  src={service.homeImage} // fallback image
+                  className="rounded-xl w-full h-44 object-cover"
+                  alt={service.title}
+                />
+              </Link>
             </SwiperSlide>
-          ))}
         </Swiper>
       ) : (
         <p className="text-gray-500">Loading services...</p>

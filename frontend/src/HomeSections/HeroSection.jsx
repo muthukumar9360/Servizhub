@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
 
 const HeroSection = () => {
-  const [services, setServices] = useState([]);
+  const api = import.meta.env.VITE_SERVER_URL;
+  const cached = getCachedData(`${api}/services`);
+  const [services, setServices] = useState(() => cached || []);
   const [username, setUsername] = useState(null);
-
-  const api=import.meta.env.VITE_SERVER_URL;
-
 
   const handleLogout = () => {
     fetch(`${api}/session/logout`, {
@@ -26,20 +26,18 @@ const HeroSection = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.user) {
-          console.log("Logged in user data:", data.user);
           setUsername(data.user.username);
         }
       })
       .catch((err) => console.error("Error fetching session:", err));
 
-    // Fetch services
-    fetch(`${api}/services`)
-      .then((res) => res.json())
-      .then((data) => setServices(data))
+    // Fetch services with cache
+    fetchWithCache(`${api}/services`)
+      .then((data) => {
+        if (data) setServices(data);
+      })
       .catch((err) => console.error("Error fetching services:", err));
-    
-
-  }, []); // <--- single closing bracket for useEffect
+  }, [api]);
 
   return (
     <div className="relative text-white">
@@ -114,12 +112,13 @@ const HeroSection = () => {
         <div className="mt-8 flex flex-wrap gap-3">
           {services.length > 0 ? (
             services.map((service, index) => (
-              <button
-                key={index}
-                className="bg-black text-white text-xl px-4 py-2 border-2 rounded-2xl hover:bg-white hover:text-black hover:border-black"
+              <Link
+                key={service._id || index}
+                to={service._id ? `/services/${service._id}` : "#"}
+                className="bg-black text-white text-xl px-4 py-2 border-2 border-white rounded-2xl hover:bg-white hover:text-black hover:border-black transition cursor-pointer inline-block"
               >
                 {service.title}
-              </button>
+              </Link>
             ))
           ) : (
             <p className="text-gray-500">Loading services...</p>

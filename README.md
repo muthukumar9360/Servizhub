@@ -1,13 +1,20 @@
 # Servizhub — Multi-Vendor Local Service Provider & Freelance Marketplace Platform
 
+[![Live App](https://img.shields.io/badge/Live%20App-servizhub.netlify.app-00C7B7?style=for-the-badge&logo=netlify)](https://servizhub.netlify.app)
+[![API Backend](https://img.shields.io/badge/Backend%20API-servizhub.onrender.com-46E3B7?style=for-the-badge&logo=render)](https://servizhub.onrender.com)
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas%20%2B%20Mongoose-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS%203-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![Redux Toolkit](https://img.shields.io/badge/State-Redux%20Toolkit-764ABC?style=flat-square&logo=redux)](https://redux-toolkit.js.org/)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
 
-**Servizhub** is an enterprise-grade, full-stack multi-vendor local service discovery and booking marketplace platform (similar to Justdial and Urban Company). It seamlessly connects local customers with verified service providers across major industries including **Wedding & Event Requisites**, **Repairs & Home Services**, **Beauty & Wellness**, **Packers & Movers**, and **Daily Needs**.
+> 🚀 **Live Production Deployment**:
+> - **Frontend Web App**: [https://servizhub.netlify.app](https://servizhub.netlify.app)
+> - **Backend API Server**: [https://servizhub.onrender.com](https://servizhub.onrender.com)
+> - **API Health Check**: [https://servizhub.onrender.com/health](https://servizhub.onrender.com/health)
+> - **Database**: MongoDB Atlas (`cluster0.uzsaneo.mongodb.net/servizhub`)
+
+**Servizhub** is an enterprise-grade, full-stack dual-engine service discovery and booking marketplace platform. It combines a **Freelance Talent Marketplace** (5 core online services with 154+ verified freelancers) and a **Justdial-style Verified Local Business Directory** (6 major offline verticals with 220+ verified businesses across Indian metropolitan cities).
 
 ---
 
@@ -223,12 +230,24 @@ sequenceDiagram
 
 ## 🗂️ Core Service Verticals
 
-| Vertical | Included Subcategories | Key Facilities & Features |
+### 1. Online Freelance Marketplace (5 Core Categories — 154+ Freelancers)
+| Category | Subcategories | Deliverables & Skill Highlights |
 |---|---|---|
-| **Wedding Requisites** | Banquet Halls, Bridal Makeup, Caterers, Wedding Photography, Wedding Planners, Decorators, DJs, Luxury Wedding Transport | Capacity filter (100–2,000 guests), AC mandapams, valet parking, drone shoots, multi-cuisine catering. |
-| **Repairs & Services** | AC Jet Cleaning & Gas Refill, Electricians, Plumbers, Car Detailing & Garage, Bike Mechanics | 90-day service warranty, same-day doorstep arrival in 90 minutes, genuine manufacturer spare parts. |
-| **Beauty & Spa** | Unisex Salons, Ladies Beauty Parlours, Therapeutic Ayurvedic Massages | Olaplex & L'Oréal certified stylists, hygienic steam sanitized environments, online slot booking. |
-| **Daily Needs & Movers** | Packers & Movers, House Deep Cleaning, Pest Control, Grocery | 5-layer bubble packing, live GPS truck tracking, transit insurance, Taski eco-friendly cleaning chemicals. |
+| **Web & App Development** | Full Stack MERN Development, Frontend & React.js, Mobile App Development, Python & Backend APIs | React 19, Next.js 15, Node.js, Express, MongoDB Atlas, Flutter, FastAPI, Docker, Microservices, GitHub ownership. |
+| **UI/UX & Product Design** | Figma UI/UX Design, Mobile App UI Design, Website Redesign & Audits | Design systems, Auto Layout, iOS & Android design guidelines, conversion optimization, heuristic audits. |
+| **Graphics & Branding** | Logo & Brand Identity, Social Media Post Design, 3D Product Modeling | Vector SVG logos, typography guides, Instagram/LinkedIn marketing kits, photorealistic Blender 3D renders. |
+| **Digital Marketing & SEO** | Search Engine Optimization (SEO), Social Media Marketing | Technical SEO, Core Web Vitals, high-DA backlinks, Meta Ads management, viral short-form growth strategy. |
+| **Video Editing & Animation** | YouTube Video Editing, Shorts & Reels Production | 4K Premiere Pro / DaVinci Resolve editing, retention pacing, sound design, animated subtitles for 9:16 reels. |
+
+### 2. Offline Verified Local Businesses (6 Major Verticals — 220+ Verified Listings)
+| Vertical | Subcategories | Key Facilities & Coverage |
+|---|---|---|
+| **Wedding Requisites** | Banquet Halls, Bridal Requisite, Caterers, Photography Services, Wedding Planners, Decor & Design | AC mandapams (150–2,000 capacity), valet parking, HD bridal airbrush makeup, live buffet catering, 4K drone shoots. |
+| **Repairs & Services** | AC Service, Electricians, Car Service, Bike Service, Plumbers | Doorstep jet cleaning, certified wiremen, multi-brand synthetic oil servicing, rapid pipeline blockage clearance. |
+| **Beauty & Spa** | Salons, Beauty Parlours, Spa & Massages | Keratin hair spa, organic facials, authentic Kerala Dhanwantharam massage therapy, private steam suites. |
+| **Daily Needs** | Packers & Movers, Home Cleaning, Pest Control, Grocery | 5-layer bubble packing, apartment deep sanitization, Bayer odorless termite/cockroach gel, organic farm produce. |
+| **Education & Coaching** | Entrance Exam Coaching, Language Training | NEET/IIT-JEE faculty coaching, CA Foundation, IELTS & TOEFL band 7.5+ training, Goethe certified German. |
+| **Healthcare & Clinics** | Dental Clinics, Diagnostic Labs | Painless laser dentistry, digital 3D OPG scanners, NABL accredited automated pathology, 30-min home sample collection. |
 
 ---
 
