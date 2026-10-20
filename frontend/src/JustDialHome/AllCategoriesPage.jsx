@@ -3,42 +3,45 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import BusinessHeaderSection from "./BusinessHeaderSection";
 
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
+
 const AllCategoriesPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const categories = location.state?.categories || [];
+  const api = import.meta.env.VITE_SERVER_URL;
+
+  const initialCategories = location.state?.categories || getCachedData(`${api}/business`) || [];
+  const [categoriesList, setCategoriesList] = useState(initialCategories);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [fadeIn, setFadeIn] = useState(false);
-  const [modalLoading, setModalLoading] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [fadeIn, setFadeIn] = useState(true);
+  const [modalLoading, setModalLoading] = useState(false);
+  const [loading, setLoading] = useState(() => initialCategories.length === 0);
 
   // 🔍 Subcategory search state
   const [subSearch, setSubSearch] = useState("");
 
+  useEffect(() => {
+    if (categoriesList.length === 0) {
+      fetchWithCache(`${api}/business`)
+        .then((data) => {
+          if (data) setCategoriesList(data);
+        })
+        .catch((err) => console.error("Error fetching categories:", err))
+        .finally(() => setLoading(false));
+    }
+  }, [api, categoriesList.length]);
+
   // Sort categories alphabetically
-  const sortedCategories = [...categories].sort((a, b) =>
+  const sortedCategories = [...categoriesList].sort((a, b) =>
     a.mainCategory.localeCompare(b.mainCategory)
   );
-
-  // Page loader
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Fade-in animation
-  useEffect(() => {
-    setTimeout(() => setFadeIn(true), 100);
-  }, []);
 
   const openModal = (category) => {
     setSelectedCategory(category);
     setSubSearch("");
-    setModalLoading(true);
+    setModalLoading(false);
     document.body.style.overflow = "hidden";
-
-    setTimeout(() => setModalLoading(false), 1000);
   };
 
   const closeModal = () => {

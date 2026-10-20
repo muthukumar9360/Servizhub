@@ -1,21 +1,30 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
 
 export default function UserProfile() {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
-  const [userId1, setUserId1] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
   const api = import.meta.env.VITE_SERVER_URL;
+  const cachedUser = getCachedData(`${api}/userprofile/${userId}`);
+  const [user, setUser] = useState(() => cachedUser || null);
+  const [userId1, setUserId1] = useState(null);
+  const [loading, setLoading] = useState(() => !cachedUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${api}/userprofile/${userId}`)
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((err) => console.error("Error fetching user profile:", err));
-  }, [userId]);
+    let isMounted = true;
+    fetchWithCache(`${api}/userprofile/${userId}`)
+      .then((data) => {
+        if (isMounted && data) setUser(data);
+      })
+      .catch((err) => console.error("Error fetching user profile:", err))
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => { isMounted = false; };
+  }, [userId, api]);
 
   useEffect(() => {
     fetch(`${api}/session/me`, { credentials: "include" })
@@ -26,7 +35,7 @@ export default function UserProfile() {
         }
       })
       .catch((err) => console.error("Error fetching session:", err));
-  }, [userId1]);
+  }, [api]);
 
   const handlePayment = async (packageData) => {
   try {
@@ -69,9 +78,6 @@ export default function UserProfile() {
     alert("Payment failed. Please try again later.");
   }
 };
-
-
-  setTimeout(() => setLoading(false), 2000);
 
   if (loading)
     return (

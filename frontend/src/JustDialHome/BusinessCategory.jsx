@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
 
 const BusinessCategory = () => {
-  const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
   const api = import.meta.env.VITE_SERVER_URL;
+  const cachedCategories = getCachedData(`${api}/business`);
+  const [categories, setCategories] = useState(() => cachedCategories || []);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${api}/business`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
+    fetchWithCache(`${api}/business`)
+      .then((data) => {
+        if (data) setCategories(data);
+      })
       .catch((err) => console.error(err));
-  }, []);
+  }, [api]);
 
   const handleSubClick = (id) => {
     navigate(`/Businesssubcategory/${encodeURIComponent(id)}`);

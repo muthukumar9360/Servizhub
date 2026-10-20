@@ -5,18 +5,21 @@ import SampleImg from "./assets/image.png";
 import FooterSection from "../HomeSections/FooterSection";
 import { Typewriter } from "react-simple-typewriter";
 
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
+
 const ServiceInfo = () => {
     const { id } = useParams();
-    const [service, setService] = useState(null);
-    const [faqs, setFaqs] = useState([]);
-    const [tags, setTags] = useState([]);
+    const api = import.meta.env.VITE_SERVER_URL;
+    const cachedService = getCachedData(`${api}/services/${id}`);
+    const [service, setService] = useState(() => cachedService || null);
+    const [faqs, setFaqs] = useState(() => cachedService?.faqarr || []);
+    const [tags, setTags] = useState(() => cachedService?.tagsarr || []);
     const [openIndex, setOpenIndex] = useState(null);
-    const [topCategories, setTopCategories] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [topCategories, setTopCategories] = useState(() => cachedService?.topservices || []);
+    const [loading, setLoading] = useState(() => !cachedService);
     const navigate = useNavigate();
     const scrollRef = useRef(null);
     const [username, setUsername] = useState(null);
-    const api = import.meta.env.VITE_SERVER_URL;
 
     const handleLogout = () => {
         fetch(`${api}/session/logout`, {
@@ -30,38 +33,41 @@ const ServiceInfo = () => {
             .catch((err) => console.error("Error logging out:", err));
     };
 
-    // Fetch Top Categories
+    // Fetch Top Categories & Service in parallel with cache
     useEffect(() => {
-        fetch(`${api}/services/topcategories/${id}`)
-            .then((res) => res.json())
-            .then((data) => setTopCategories(data))
-            .catch((err) => console.error("Error fetching top categories:", err));
-    }, [id]);
+        let isMounted = true;
 
-    // Fetch service
-    useEffect(() => {
         fetch(`${api}/session/me`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
-                if (data.user) {
-                    console.log("Logged in user data:", data.user);
+                if (data.user && isMounted) {
                     sessionStorage.setItem("userdemoId", data.user.userId);
                     setUsername(data.user._id);
                     localStorage.setItem("username", data.user._id);
                 }
             })
             .catch((err) => console.error("Error fetching session:", err));
-        fetch(`${api}/services/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setService(data)
-                setTags(data.tagsarr || []);
-                setTopCategories(data.topservices || []);
-                console.log(data.topservices)
-                setFaqs(data.faqarr || []);
+
+        Promise.all([
+            fetchWithCache(`${api}/services/${id}`),
+            fetchWithCache(`${api}/services/topcategories/${id}`).catch(() => [])
+        ])
+            .then(([serviceData, topCatData]) => {
+                if (!isMounted) return;
+                if (serviceData) {
+                    setService(serviceData);
+                    setTags(serviceData.tagsarr || []);
+                    setTopCategories(topCatData?.length ? topCatData : (serviceData.topservices || []));
+                    setFaqs(serviceData.faqarr || []);
+                }
             })
-            .catch((err) => console.error("Error fetching service:", err));
-    }, [id]);
+            .catch((err) => console.error("Error fetching service:", err))
+            .finally(() => {
+                if (isMounted) setLoading(false);
+            });
+
+        return () => { isMounted = false; };
+    }, [id, api]);
 
     const scroll = (direction) => {
         if (scrollRef.current) {
@@ -71,8 +77,6 @@ const ServiceInfo = () => {
             });
         }
     };
-
-    setTimeout(() => setLoading(false), 2000);
 
     if (loading)
         return (

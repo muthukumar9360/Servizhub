@@ -212,12 +212,17 @@ const ListingCard = ({
   );
 };
 
+import { fetchWithCache, getCachedData } from "../../utils/apiCache";
+
 const SubcategoryListingPage = () => {
   const { id } = useParams();
-  const [listings, setListings] = useState([]);
-  const [subInfo, setSubInfo] = useState(null);
-  const [otherSubcategories, setOtherSubcategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const api = import.meta.env.VITE_SERVER_URL;
+  const cachedData = id ? getCachedData(`${api}/business/subcategory/${id}`) : null;
+
+  const [listings, setListings] = useState(() => cachedData?.listings || []);
+  const [subInfo, setSubInfo] = useState(() => cachedData?.subcategory || null);
+  const [otherSubcategories, setOtherSubcategories] = useState(() => cachedData?.otherSubcategories || []);
+  const [loading, setLoading] = useState(() => !cachedData);
   const [userId, setUserId] = useState(null);
   const [likedItems, setLikedItems] = useState([]);
   const [savedItems, setSavedItems] = useState([]);
@@ -233,8 +238,6 @@ const SubcategoryListingPage = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [resendTimer, setResendTimer] = useState(0);
 
-  const api = import.meta.env.VITE_SERVER_URL;
-
   useEffect(() => {
     fetch(`${api}/session/me`, { credentials: "include" })
       .then((res) => res.json())
@@ -249,14 +252,20 @@ const SubcategoryListingPage = () => {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`${api}/business/subcategory/${id}`)
-      .then((res) => res.json())
+    let isMounted = true;
+    fetchWithCache(`${api}/business/subcategory/${id}`)
       .then((data) => {
+        if (!isMounted || !data) return;
         setSubInfo(data.subcategory);
         setListings(data.listings || []);
         setOtherSubcategories(data.otherSubcategories || []);
       })
-      .catch((err) => console.error("Error fetching subcategory:", err));
+      .catch((err) => console.error("Error fetching subcategory:", err))
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => { isMounted = false; };
   }, [id, api]);
 
   useEffect(() => {
@@ -271,11 +280,6 @@ const SubcategoryListingPage = () => {
       })
       .catch((err) => console.error("Error fetching liked/saved:", err));
   }, [userId, api]);
-
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(t);
-  }, []);
 
   useEffect(() => {
     if (resendTimer <= 0) return;

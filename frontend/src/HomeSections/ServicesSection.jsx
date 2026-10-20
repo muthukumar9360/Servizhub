@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
 
 const ServicesSection = () => {
-  const [services, setServices] = useState([]);
-  const api=import.meta.env.VITE_SERVER_URL;
+  const api = import.meta.env.VITE_SERVER_URL;
+  const cached = getCachedData(`${api}/services`);
+  const [services, setServices] = useState(() => cached || []);
 
   useEffect(() => {
-    fetch(`${api}/services`)
-      .then((res) => res.json())
+    fetchWithCache(`${api}/services`)
       .then((data) => {
-        console.log(data);
-        setServices(data);
+        if (data) setServices(data);
       })
       .catch((err) => console.error("Error fetching services:", err));
-  }, []);
+  }, [api]);
 
   return (
     <section className="px-10 mt-12 pt-12 bg-white">

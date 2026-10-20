@@ -5,18 +5,20 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
+
 const PopularServices = () => {
-  const [services, setServices] = useState([]);
-
-  const api=import.meta.env.VITE_SERVER_URL;
-
+  const api = import.meta.env.VITE_SERVER_URL;
+  const cached = getCachedData(`${api}/services`);
+  const [services, setServices] = useState(() => cached || []);
 
   useEffect(() => {
-    fetch(`${api}/services`)
-      .then((res) => res.json())
-      .then((data) => setServices(data))
+    fetchWithCache(`${api}/services`)
+      .then((data) => {
+        if (data) setServices(data);
+      })
       .catch((err) => console.error("Error fetching services:", err));
-  }, []);
+  }, [api]);
 
   return (
     <section className="px-10 py-8 bg-white">

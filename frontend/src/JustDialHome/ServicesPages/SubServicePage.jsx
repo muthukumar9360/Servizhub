@@ -19,13 +19,11 @@ const Breadcrumb = ({ subTitle }) => {
     );
 };
 
+import { fetchWithCache, getCachedData } from "../../utils/apiCache";
+
 const fetchBusinessData = async (businessId) => {
     const api = import.meta.env.VITE_SERVER_URL;
-    const response = await fetch(`${api}/businesslist/${businessId}`);
-    const data = await response.json();
-    // small delay to keep UX consistent with previous behavior
-    await new Promise(resolve => setTimeout(resolve, 300));
-    return data;
+    return await fetchWithCache(`${api}/businesslist/${businessId}`);
 };
 
 const ImageGallery = ({ images = [], totalPhotos = 0 }) => {
@@ -173,11 +171,14 @@ const FloatingFooterBar = ({ business }) => {
 }
 
 const SubServicePage = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { id } = useParams();
+    const api = import.meta.env.VITE_SERVER_URL;
+    const cached = id ? getCachedData(`${api}/businesslist/${id}`) : null;
+
+    const [data, setData] = useState(() => cached || null);
+    const [loading, setLoading] = useState(() => !cached);
     const [error, setError] = useState("");
     const [activeTab, setActiveTab] = useState('Overview');
-    const { id } = useParams();
     const [saved, setSaved] = useState(true);
     const [liked, setLiked] = useState(true);
 
@@ -192,21 +193,26 @@ const SubServicePage = () => {
     };
 
     useEffect(() => {
+        let isMounted = true;
         const loadData = async () => {
             try {
-                setLoading(true);
+                if (!cached) setLoading(true);
                 const fetchedData = await fetchBusinessData(id);
-                setData(fetchedData);
-                setError(null);
+                if (isMounted) {
+                    setData(fetchedData);
+                    setError(null);
+                }
             } catch (err) {
-                console.error("Failed to fetch business data:", err);
-                setError("Failed to load business details. Please try again.");
-                setData(null);
+                if (isMounted) {
+                    console.error("Failed to fetch business data:", err);
+                    setError("Failed to load business details. Please try again.");
+                }
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
         loadData();
+        return () => { isMounted = false; };
     }, [id]);
 
     if (loading)

@@ -3,17 +3,24 @@ import TipsSection from "./TipsSection";
 import FooterSection from "../HomeSections/FooterSection";
 import RemainingSection from "../HomeSections/RemainingSection";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { fetchWithCache, getCachedData } from "../utils/apiCache";
 
 const SubcategoryInfo = () => {
   const { subId } = useParams();
-  const [users, setUsers] = useState([]);
-  const [username, setUsername] = useState(null);
-  const [service, setService] = useState("");
-  const [topcategories, setTopcategories] = useState([]);
-  const [faqs, setFaqs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
   const api = import.meta.env.VITE_SERVER_URL;
+  const params = new URLSearchParams(window.location.search);
+  const serviceId = params.get("serviceid");
+
+  const cachedUsers = getCachedData(`${api}/subcategory/users/${subId}`);
+  const cachedService = serviceId ? getCachedData(`${api}/services/${serviceId}`) : null;
+
+  const [users, setUsers] = useState(() => cachedUsers || []);
+  const [username, setUsername] = useState(null);
+  const [service, setService] = useState(() => cachedService || "");
+  const [topcategories, setTopcategories] = useState(() => cachedService?.topservices || []);
+  const [faqs, setFaqs] = useState(() => cachedService?.faqarr || []);
+  const [loading, setLoading] = useState(() => !(cachedUsers && (!serviceId || cachedService)));
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     fetch(`${api}/session/logout`, {
@@ -29,39 +36,44 @@ const SubcategoryInfo = () => {
 
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("serviceid");
+    let isMounted = true;
+    const fetchPromises = [
+      fetchWithCache(`${api}/subcategory/users/${subId}`)
+        .then((data) => {
+          if (isMounted) setUsers(data || []);
+        })
+        .catch((err) => console.error("Error fetching users:", err))
+    ];
 
-    fetch(`${api}/services/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setService(data)
-        setFaqs(data.faqarr || []);
-        setTopcategories(data.topservices)
-        console.log(data.topservices)
-      })
-      .catch((err) => console.error("Error fetching service:", err));
+    if (serviceId) {
+      fetchPromises.push(
+        fetchWithCache(`${api}/services/${serviceId}`)
+          .then((data) => {
+            if (isMounted && data) {
+              setService(data);
+              setFaqs(data.faqarr || []);
+              setTopcategories(data.topservices || []);
+            }
+          })
+          .catch((err) => console.error("Error fetching service:", err))
+      );
+    }
 
     fetch(`${api}/session/me`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
-        if (data.user) {
-          console.log("Logged in user data:", data.user);
+        if (data.user && isMounted) {
           setUsername(data.user._id);
         }
       })
       .catch((err) => console.error("Error fetching session:", err));
-    fetch(`${api}/subcategory/users/${subId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data)
-      })
-      .catch((err) => console.error("Error fetching users:", err));
-  }, [subId]);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+    Promise.all(fetchPromises).finally(() => {
+      if (isMounted) setLoading(false);
+    });
+
+    return () => { isMounted = false; };
+  }, [subId, serviceId, api]);
 
   if (loading)
     return (
