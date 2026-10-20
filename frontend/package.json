@@ -12,6 +12,7 @@
   "dependencies": {
     "await": "^0.2.6",
     "axios": "^1.12.2",
+    "firebase": "^13.0.0",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.544.0",
     "node-fetch": "^3.3.2",
