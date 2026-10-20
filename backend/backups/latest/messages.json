@@ -1,0 +1,398 @@
+[
+  {
+    "_id": "68f368ef7061eb8091e2a02e",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hi",
+    "createdAt": "2025-10-18T10:16:15.805Z",
+    "updatedAt": "2025-10-18T10:16:15.805Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36d023d62a7470d5dd775",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hi bro",
+    "createdAt": "2025-10-18T10:33:38.651Z",
+    "updatedAt": "2025-10-18T10:33:38.651Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36d4c3d62a7470d5dd777",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "why no reply??",
+    "createdAt": "2025-10-18T10:34:52.281Z",
+    "updatedAt": "2025-10-18T10:34:52.281Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36d6d3d62a7470d5dd779",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "im harish",
+    "createdAt": "2025-10-18T10:35:25.085Z",
+    "updatedAt": "2025-10-18T10:35:25.085Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36e3c3d62a7470d5dd77b",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "reply",
+    "createdAt": "2025-10-18T10:38:52.217Z",
+    "updatedAt": "2025-10-18T10:38:52.217Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36ef53d62a7470d5dd78a",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "please",
+    "createdAt": "2025-10-18T10:41:57.965Z",
+    "updatedAt": "2025-10-18T10:41:57.965Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36f2f3d62a7470d5dd791",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "thanks",
+    "createdAt": "2025-10-18T10:42:55.681Z",
+    "updatedAt": "2025-10-18T10:42:55.681Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36f3b3d62a7470d5dd793",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "thankn you",
+    "createdAt": "2025-10-18T10:43:07.120Z",
+    "updatedAt": "2025-10-18T10:43:07.120Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36f633d62a7470d5dd7cf",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc0400071b",
+    "text": "Hi",
+    "createdAt": "2025-10-18T10:43:47.043Z",
+    "updatedAt": "2025-10-18T10:43:47.043Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f36f973d62a7470d5dd80b",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hiiiiiiiiiiii",
+    "createdAt": "2025-10-18T10:44:39.221Z",
+    "updatedAt": "2025-10-18T10:44:39.221Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f39e9282164c64dc00336b",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Hiiiiiiiiiiiiiiiiiii",
+    "createdAt": "2025-10-18T14:05:06.501Z",
+    "updatedAt": "2025-10-18T14:05:06.501Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3a264d36892d987e5331d",
+    "senderId": "68f34351626e416926e64159",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Muthukumar",
+    "createdAt": "2025-10-18T14:21:24.199Z",
+    "updatedAt": "2025-10-18T14:21:24.199Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3a39c9ceb2550884f77af",
+    "senderId": "68f34351626e416926e64159",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hello world Frank and Muthu and Harish",
+    "createdAt": "2025-10-18T14:26:36.671Z",
+    "updatedAt": "2025-10-18T14:26:36.671Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3b344f5f1d5ebdedf9a1b",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Hi",
+    "createdAt": "2025-10-18T15:33:24.955Z",
+    "updatedAt": "2025-10-18T15:33:24.955Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3b3cff5f1d5ebdedf9a24",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Hi",
+    "createdAt": "2025-10-18T15:35:43.911Z",
+    "updatedAt": "2025-10-18T15:35:43.911Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3b3d8f5f1d5ebdedf9a26",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Hi",
+    "createdAt": "2025-10-18T15:35:52.805Z",
+    "updatedAt": "2025-10-18T15:35:52.805Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3b4aaf5f1d5ebdedf9a5c",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Hiii",
+    "createdAt": "2025-10-18T15:39:22.897Z",
+    "updatedAt": "2025-10-18T15:39:22.897Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3b4b7f5f1d5ebdedf9a5e",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "HEllo",
+    "createdAt": "2025-10-18T15:39:35.347Z",
+    "updatedAt": "2025-10-18T15:39:35.347Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f3c4ab6412fe6bbc450418",
+    "senderId": "68f34351626e416926e64159",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "Welcome to the World of Mark Antony Mamae",
+    "createdAt": "2025-10-18T16:47:39.309Z",
+    "updatedAt": "2025-10-18T16:47:39.309Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f46135f54d8e7feb7d51b1",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hello",
+    "createdAt": "2025-10-19T03:55:33.192Z",
+    "updatedAt": "2025-10-19T03:55:33.192Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f4613cf54d8e7feb7d51b3",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "super great welcome",
+    "createdAt": "2025-10-19T03:55:40.016Z",
+    "updatedAt": "2025-10-19T03:55:40.016Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f46385f54d8e7feb7d51b5",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "great",
+    "createdAt": "2025-10-19T04:05:25.938Z",
+    "updatedAt": "2025-10-19T04:05:25.938Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465acf54d8e7feb7d52bb",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "super great",
+    "createdAt": "2025-10-19T04:14:36.536Z",
+    "updatedAt": "2025-10-19T04:14:36.536Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465fbf54d8e7feb7d52bd",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "sagsdg",
+    "createdAt": "2025-10-19T04:15:55.082Z",
+    "updatedAt": "2025-10-19T04:15:55.082Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465fcf54d8e7feb7d52bf",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "seh",
+    "createdAt": "2025-10-19T04:15:56.225Z",
+    "updatedAt": "2025-10-19T04:15:56.225Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465fdf54d8e7feb7d52c1",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "srrgerurj",
+    "createdAt": "2025-10-19T04:15:57.270Z",
+    "updatedAt": "2025-10-19T04:15:57.270Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465fef54d8e7feb7d52c3",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "ereh",
+    "createdAt": "2025-10-19T04:15:58.392Z",
+    "updatedAt": "2025-10-19T04:15:58.392Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f465fff54d8e7feb7d52c5",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "eryerj",
+    "createdAt": "2025-10-19T04:15:59.389Z",
+    "updatedAt": "2025-10-19T04:15:59.389Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f46600f54d8e7feb7d52c7",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "erryrtjtjhdsfgdh",
+    "createdAt": "2025-10-19T04:16:00.893Z",
+    "updatedAt": "2025-10-19T04:16:00.893Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f46602f54d8e7feb7d52c9",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "dfgertrkyjerge",
+    "createdAt": "2025-10-19T04:16:02.270Z",
+    "updatedAt": "2025-10-19T04:16:02.270Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f597710a8bbd7f62fdea55",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hel;lo welcome",
+    "createdAt": "2025-10-20T01:59:13.163Z",
+    "updatedAt": "2025-10-20T01:59:13.163Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f597720a8bbd7f62fdea57",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "nfjsbgdnh",
+    "createdAt": "2025-10-20T01:59:14.525Z",
+    "updatedAt": "2025-10-20T01:59:14.525Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f597730a8bbd7f62fdea59",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "asjdfdfsabgbjhkdtj",
+    "createdAt": "2025-10-20T01:59:15.768Z",
+    "updatedAt": "2025-10-20T01:59:15.768Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f597740a8bbd7f62fdea5b",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "asfnjsgbjernh",
+    "createdAt": "2025-10-20T01:59:16.834Z",
+    "updatedAt": "2025-10-20T01:59:16.834Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f597970a8bbd7f62fdea6c",
+    "senderId": "68f459615aa436926d9dc597",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hello welcome to the world of mark antony maame",
+    "createdAt": "2025-10-20T01:59:51.192Z",
+    "updatedAt": "2025-10-20T01:59:51.192Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f85a251285f933a87a743e",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "jilhjl",
+    "createdAt": "2025-10-22T04:14:29.682Z",
+    "updatedAt": "2025-10-22T04:14:29.682Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f85b061285f933a87a744c",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hiii",
+    "createdAt": "2025-10-22T04:18:14.661Z",
+    "updatedAt": "2025-10-22T04:18:14.661Z",
+    "__v": 0
+  },
+  {
+    "_id": "68fa4cb783be2571953bc415",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000717",
+    "text": "HI",
+    "createdAt": "2025-10-23T15:41:43.379Z",
+    "updatedAt": "2025-10-23T15:41:43.379Z",
+    "__v": 0
+  },
+  {
+    "_id": "6903889182bf0aff0a5b2133",
+    "senderId": "68e88ae8b235921dccb06bca",
+    "receiverId": "68c5929ea194cacc04000717",
+    "text": "Hello",
+    "createdAt": "2025-10-30T15:47:29.410Z",
+    "updatedAt": "2025-10-30T15:47:29.410Z",
+    "__v": 0
+  },
+  {
+    "_id": "6904382b7e84ccb457f0cf43",
+    "senderId": "68f7b10ef96e5317bf1677ae",
+    "receiverId": "68c5929ea194cacc04000718",
+    "text": "hello world",
+    "createdAt": "2025-10-31T04:16:43.146Z",
+    "updatedAt": "2025-10-31T04:16:43.146Z",
+    "__v": 0
+  },
+  {
+    "_id": "6904382d7e84ccb457f0cf45",
+    "senderId": "68f7b10ef96e5317bf1677ae",
+    "receiverId": "68c5929ea194cacc04000718",
+    "text": "welcome",
+    "createdAt": "2025-10-31T04:16:45.081Z",
+    "updatedAt": "2025-10-31T04:16:45.081Z",
+    "__v": 0
+  },
+  {
+    "_id": "69047f3edf6f533992ff3a3c",
+    "senderId": "68f7b10ef96e5317bf1677ae",
+    "receiverId": "68c5929ea194cacc04000717",
+    "text": "hi",
+    "createdAt": "2025-10-31T09:19:58.326Z",
+    "updatedAt": "2025-10-31T09:19:58.326Z",
+    "__v": 0
+  },
+  {
+    "_id": "69368c5f366c39c2438c1a8d",
+    "senderId": "69368b37366c39c2438c04b3",
+    "receiverId": "68c5929ea194cacc0400071a",
+    "text": "gngdfn",
+    "createdAt": "2025-12-08T08:29:19.747Z",
+    "updatedAt": "2025-12-08T08:29:19.747Z",
+    "__v": 0
+  },
+  {
+    "_id": "69368d89366c39c2438c1dc2",
+    "senderId": "69368b37366c39c2438c04b3",
+    "receiverId": "68c5929ea194cacc04000719",
+    "text": "hnkm,nhj;",
+    "createdAt": "2025-12-08T08:34:17.424Z",
+    "updatedAt": "2025-12-08T08:34:17.424Z",
+    "__v": 0
+  }
+]

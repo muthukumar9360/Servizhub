@@ -1,0 +1,279 @@
+[
+  {
+    "_id": "6ad726edd60c2e0b51d5045f",
+    "name": "Muthu Kumar A",
+    "username": "muthukumar_9360",
+    "serviceId": "6ad726ecd60c2e0b51d50440",
+    "subcategoryId": "6ad726ecd60c2e0b51d50441",
+    "description": "Experienced MERN stack developer passionate about building scalable, secure web architectures, real-time Socket.IO communication, and clean responsive UI.",
+    "price": 2500,
+    "rating": 4.9,
+    "completedProjects": 24,
+    "skills": [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Socket.IO",
+      "Tailwind CSS",
+      "Redux Toolkit"
+    ],
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+    "location": "Chennai, Tamil Nadu",
+    "experience": 3,
+    "availability": "Available",
+    "phone": "9360493470",
+    "email": "2312090@nec.edu.in",
+    "education": [
+      {
+        "degree": "B.Tech Information Technology",
+        "institution": "National Engineering College",
+        "year": 2026,
+        "_id": "6ad726edd60c2e0b51d50460"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Servizio Marketplace",
+        "description": "Multi-vendor service discovery and booking platform",
+        "link": "https://github.com/muthukumar9360/Servizio",
+        "_id": "6ad726edd60c2e0b51d50461"
+      },
+      {
+        "title": "Real-time Chat Engine",
+        "description": "Socket.IO bi-directional chat with room partitioning",
+        "link": "https://github.com/muthukumar9360",
+        "_id": "6ad726edd60c2e0b51d50462"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewer": "Anand R.",
+        "comment": "Delivered our complete web platform ahead of schedule with spotless code quality!",
+        "rating": 5,
+        "_id": "6ad726edd60c2e0b51d50463"
+      },
+      {
+        "reviewer": "Sarah Jenkins",
+        "comment": "Great communication and impressive full-stack skills. Highly recommended!",
+        "rating": 5,
+        "_id": "6ad726edd60c2e0b51d50464"
+      }
+    ],
+    "languages": [
+      "English",
+      "Tamil"
+    ],
+    "linkedin": "https://linkedin.com/in/muthukumar9360",
+    "github": "https://github.com/muthukumar9360",
+    "createdAt": "2026-10-20T08:31:41.254Z",
+    "updatedAt": "2026-10-20T08:31:41.254Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d50466",
+    "name": "Harishpandian I",
+    "username": "Harishpandian",
+    "serviceId": "6ad726ecd60c2e0b51d50448",
+    "subcategoryId": "6ad726ecd60c2e0b51d50449",
+    "description": "Senior Product & UI/UX Designer crafting user-centric design systems, mobile apps, and SaaS interfaces with strong focus on micro-interactions and usability.",
+    "price": 1800,
+    "rating": 5,
+    "completedProjects": 38,
+    "skills": [
+      "Figma",
+      "UI/UX Design",
+      "Wireframing",
+      "Design Systems",
+      "Prototyping",
+      "User Research"
+    ],
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+    "location": "Madurai, Tamil Nadu",
+    "experience": 4,
+    "availability": "Available",
+    "phone": "8608731504",
+    "email": "iharishpandian2006@gmail.com",
+    "education": [
+      {
+        "degree": "B.Tech Computer Science",
+        "institution": "Anna University",
+        "year": 2025,
+        "_id": "6ad726edd60c2e0b51d50467"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Fintech Mobile App UI",
+        "description": "Complete design system and 40+ screens in Figma",
+        "link": "https://figma.com",
+        "_id": "6ad726edd60c2e0b51d50468"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewer": "Karthik S.",
+        "comment": "Our app conversion increased 40% after Harish redesigned the onboarding flow!",
+        "rating": 5,
+        "_id": "6ad726edd60c2e0b51d50469"
+      }
+    ],
+    "languages": [
+      "English",
+      "Tamil"
+    ],
+    "linkedin": "",
+    "github": "",
+    "createdAt": "2026-10-20T08:31:41.361Z",
+    "updatedAt": "2026-10-20T08:31:41.361Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d5046b",
+    "name": "Ajay Kumar K L",
+    "username": "CaptainAmerica",
+    "serviceId": "6ad726ecd60c2e0b51d50440",
+    "subcategoryId": "6ad726ecd60c2e0b51d50442",
+    "description": "Frontend specialist and animation enthusiast. I turn complex Figma designs into responsive, production-ready React and Next.js applications.",
+    "price": 1500,
+    "rating": 4.8,
+    "completedProjects": 19,
+    "skills": [
+      "React",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Vite",
+      "Framer Motion"
+    ],
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80",
+    "location": "Bengaluru, Karnataka",
+    "experience": 2,
+    "availability": "Available",
+    "phone": "1234567890",
+    "email": "hpandian176@gmail.com",
+    "education": [],
+    "projects": [],
+    "reviews": [],
+    "languages": [
+      "English",
+      "Tamil",
+      "Kannada"
+    ],
+    "linkedin": "",
+    "github": "",
+    "createdAt": "2026-10-20T08:31:41.444Z",
+    "updatedAt": "2026-10-20T08:31:41.444Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d5046d",
+    "name": "Pooja Sharma",
+    "username": "poojasharma_seo",
+    "serviceId": "6ad726edd60c2e0b51d50453",
+    "subcategoryId": "6ad726edd60c2e0b51d50454",
+    "description": "Certified Google & SEO specialist. I help local businesses and online marketplaces achieve #1 organic Google rankings.",
+    "price": 1200,
+    "rating": 4.9,
+    "completedProjects": 45,
+    "skills": [
+      "Technical SEO",
+      "Ahrefs",
+      "Google Search Console",
+      "Keyword Research",
+      "Backlinking"
+    ],
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+    "location": "Hyderabad, Telangana",
+    "experience": 5,
+    "availability": "Available",
+    "phone": "9876543231",
+    "email": "pooja.seo@gmail.com",
+    "education": [],
+    "projects": [],
+    "reviews": [],
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "linkedin": "",
+    "github": "",
+    "createdAt": "2026-10-20T08:31:41.517Z",
+    "updatedAt": "2026-10-20T08:31:41.517Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d5046f",
+    "name": "Vikramaditya Nair",
+    "username": "vikram_video",
+    "serviceId": "6ad726edd60c2e0b51d50457",
+    "subcategoryId": "6ad726edd60c2e0b51d50458",
+    "description": "Professional video editor working with top creators. Expertise in Premiere Pro, After Effects, cinematic color grading, and dynamic sound design.",
+    "price": 2000,
+    "rating": 5,
+    "completedProjects": 62,
+    "skills": [
+      "Adobe Premiere Pro",
+      "After Effects",
+      "Color Grading",
+      "Sound Design",
+      "Motion Graphics"
+    ],
+    "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80",
+    "location": "Kochi, Kerala",
+    "experience": 4,
+    "availability": "Available",
+    "phone": "9876543232",
+    "email": "vikram.media@gmail.com",
+    "education": [],
+    "projects": [],
+    "reviews": [],
+    "languages": [
+      "English",
+      "Malayalam",
+      "Tamil"
+    ],
+    "linkedin": "",
+    "github": "",
+    "createdAt": "2026-10-20T08:31:41.585Z",
+    "updatedAt": "2026-10-20T08:31:41.585Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d50471",
+    "name": "Sneha Mukherjee",
+    "username": "sneha_copy",
+    "serviceId": "6ad726edd60c2e0b51d5045b",
+    "subcategoryId": "6ad726edd60c2e0b51d5045d",
+    "description": "Direct response copywriter and brand voice strategist. I write words that sell products and build trust with your customers.",
+    "price": 1000,
+    "rating": 4.8,
+    "completedProjects": 31,
+    "skills": [
+      "Copywriting",
+      "SEO Content",
+      "Email Marketing",
+      "Brand Messaging"
+    ],
+    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
+    "location": "Kolkata, West Bengal",
+    "experience": 3,
+    "availability": "Available",
+    "phone": "9876543233",
+    "email": "sneha.writer@gmail.com",
+    "education": [],
+    "projects": [],
+    "reviews": [],
+    "languages": [
+      "English",
+      "Bengali",
+      "Hindi"
+    ],
+    "linkedin": "",
+    "github": "",
+    "createdAt": "2026-10-20T08:31:41.657Z",
+    "updatedAt": "2026-10-20T08:31:41.657Z",
+    "__v": 0
+  }
+]

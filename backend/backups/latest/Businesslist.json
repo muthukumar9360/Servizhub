@@ -1,0 +1,525 @@
+[
+  {
+    "_id": "6ad726eed60c2e0b51d50497",
+    "name": "Grand Imperial Palace & Convention Centre",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726edd60c2e0b51d50475",
+    "subCategoryId": "6ad726edd60c2e0b51d50476",
+    "ratings": {
+      "overall": 4.9,
+      "total": 342
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "Open 24 Hours / 7 Days",
+    "extraInfo": "Capacity: 1500 Guests | AC Centralized | 250+ Car Parking",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&auto=format&fit=crop&q=80",
+          "alt": "Grand Banquet Interior",
+          "_id": "6ad726eed60c2e0b51d50498"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Chennai's premier luxury wedding venue with sprawling air-conditioned banquet halls, royal chandeliers, green bridal dressing suites, and generator backup.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "No. 45, GST Road, Guindy",
+      "city": "Chennai",
+      "pincode": "600032"
+    },
+    "contactDetails": {
+      "phone": "9876543201",
+      "email": "grandimperial@servizio.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.408Z"
+    },
+    "tags": [
+      "Banquet Hall",
+      "Wedding Mandapam",
+      "AC Convention Center",
+      "Valet Parking"
+    ],
+    "createdAt": "2026-10-20T08:31:42.411Z",
+    "updatedAt": "2026-10-20T08:31:42.411Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d5049a",
+    "name": "CoolBreeze 24/7 Doorstep AC Repair & Service",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726edd60c2e0b51d5047d",
+    "subCategoryId": "6ad726edd60c2e0b51d5047e",
+    "ratings": {
+      "overall": 4.8,
+      "total": 512
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "07:00 AM - 10:00 PM",
+    "extraInfo": "30-Min Fast Response | 90-Day Service Warranty | Genuine Spare Parts",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop&q=80",
+          "alt": "AC Deep Cleaning",
+          "_id": "6ad726eed60c2e0b51d5049b"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Certified Daikin, Voltas, and LG technicians providing jet pressure cleaning, refrigerant gas leakage repair, compressor fixes, and split AC relocation.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "Shop 12, 1st Cross, Anna Nagar West",
+      "city": "Chennai",
+      "pincode": "600040"
+    },
+    "contactDetails": {
+      "phone": "9876543202",
+      "email": "support@coolbreezeac.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.506Z"
+    },
+    "tags": [
+      "AC Repair",
+      "AC Installation",
+      "Gas Refill",
+      "Voltas Service",
+      "Daikin Specialist"
+    ],
+    "createdAt": "2026-10-20T08:31:42.507Z",
+    "updatedAt": "2026-10-20T08:31:42.507Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d5049d",
+    "name": "Glow & Shine Luxury Unisex Salon & Spa",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726eed60c2e0b51d50484",
+    "subCategoryId": "6ad726eed60c2e0b51d50485",
+    "ratings": {
+      "overall": 4.9,
+      "total": 289
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "09:00 AM - 09:00 PM",
+    "extraInfo": "L'Oreal Certified Stylists | Sanitized Tools | Bridal Lounge",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop&q=80",
+          "alt": "Salon Chairs",
+          "_id": "6ad726eed60c2e0b51d5049e"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Premium hair and beauty salon offering Moroccan oil hair spa, keratin treatments, beard sculpting, organic skin facials, and bridal makeovers.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "88, 100 Feet Road, Indiranagar",
+      "city": "Bengaluru",
+      "pincode": "560038"
+    },
+    "contactDetails": {
+      "phone": "9876543203",
+      "email": "glowandshine@salon.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.594Z"
+    },
+    "tags": [
+      "Hair Salon",
+      "Keratin Treatment",
+      "Unisex Salon",
+      "Bridal Makeup",
+      "Indiranagar"
+    ],
+    "createdAt": "2026-10-20T08:31:42.595Z",
+    "updatedAt": "2026-10-20T08:31:42.595Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d504a0",
+    "name": "SafeShift Inter-City Packers & Relocation Movers",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726eed60c2e0b51d50489",
+    "subCategoryId": "6ad726eed60c2e0b51d5048a",
+    "ratings": {
+      "overall": 4.9,
+      "total": 420
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "24/7 Helpline",
+    "extraInfo": "Transit Insurance | Bubble Wrap & Crates | Zero Damage Guarantee",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=800&auto=format&fit=crop&q=80",
+          "alt": "Moving Boxes",
+          "_id": "6ad726eed60c2e0b51d504a1"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Top-rated packing and moving service for household shifting, office relocation, vehicle car carrier transport, and warehouse storage.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "Plot 5, Bypass Road",
+      "city": "Madurai",
+      "pincode": "625016"
+    },
+    "contactDetails": {
+      "phone": "9876543204",
+      "email": "contact@safeshiftmovers.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.676Z"
+    },
+    "tags": [
+      "Packers Movers",
+      "Home Shifting",
+      "Office Relocation",
+      "Safe Transport"
+    ],
+    "createdAt": "2026-10-20T08:31:42.677Z",
+    "updatedAt": "2026-10-20T08:31:42.677Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d504a3",
+    "name": "LensCraft Cinematic Wedding & Portrait Studio",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726edd60c2e0b51d50475",
+    "subCategoryId": "6ad726edd60c2e0b51d50479",
+    "ratings": {
+      "overall": 5,
+      "total": 198
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "09:30 AM - 08:30 PM",
+    "extraInfo": "Sony Alpha 7IV & Drone Equipment | Pre-Wedding Shoot Specialists",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&auto=format&fit=crop&q=80",
+          "alt": "Wedding Photography",
+          "_id": "6ad726eed60c2e0b51d504a4"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Award-winning wedding photography and cinematography team capturing your timeless candid moments, reception teasers, and albums.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "21, Race Course Road",
+      "city": "Coimbatore",
+      "pincode": "641018"
+    },
+    "contactDetails": {
+      "phone": "9876543205",
+      "email": "lenscraft@studio.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.764Z"
+    },
+    "tags": [
+      "Wedding Photography",
+      "Candid Photos",
+      "Drone Shoot",
+      "Cinematography"
+    ],
+    "createdAt": "2026-10-20T08:31:42.766Z",
+    "updatedAt": "2026-10-20T08:31:42.766Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d504a6",
+    "name": "VoltSafe Certified Domestic & Industrial Electricians",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726edd60c2e0b51d5047d",
+    "subCategoryId": "6ad726edd60c2e0b51d5047f",
+    "ratings": {
+      "overall": 4.8,
+      "total": 275
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "08:00 AM - 09:00 PM",
+    "extraInfo": "Licensed Wiremen | 45-Min Emergency Service | Fixed Rates",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&auto=format&fit=crop&q=80",
+          "alt": "Electrician Working",
+          "_id": "6ad726eed60c2e0b51d504a7"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Certified electricians for house wiring, 3-phase connection balancing, short circuit troubleshooting, and commercial panel setups.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "No. 14, Velachery Main Road",
+      "city": "Chennai",
+      "pincode": "600042"
+    },
+    "contactDetails": {
+      "phone": "9876543206",
+      "email": "voltsafe@electrician.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.854Z"
+    },
+    "tags": [
+      "Electrician",
+      "House Wiring",
+      "Emergency Power Fix",
+      "Inverter Installation"
+    ],
+    "createdAt": "2026-10-20T08:31:42.855Z",
+    "updatedAt": "2026-10-20T08:31:42.855Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726eed60c2e0b51d504a9",
+    "name": "Apex Academy - IIT JEE & NEET Premier Institute",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726eed60c2e0b51d5048f",
+    "subCategoryId": "6ad726eed60c2e0b51d50490",
+    "ratings": {
+      "overall": 4.9,
+      "total": 460
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "08:00 AM - 08:00 PM",
+    "extraInfo": "Top Rankers Faculty | Mock Test Series | AC Digital Classrooms",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=80",
+          "alt": "Classroom",
+          "_id": "6ad726eed60c2e0b51d504aa"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Comprehensive coaching for 11th, 12th, and repeater students for NEET Medical and IIT JEE Engineering with proven track records.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "5th Block, Koramangala",
+      "city": "Bengaluru",
+      "pincode": "560095"
+    },
+    "contactDetails": {
+      "phone": "9876543207",
+      "email": "admissions@apexacademy.edu"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:42.935Z"
+    },
+    "tags": [
+      "NEET Coaching",
+      "JEE Coaching",
+      "Tuitions",
+      "Apex Academy"
+    ],
+    "createdAt": "2026-10-20T08:31:42.936Z",
+    "updatedAt": "2026-10-20T08:31:42.936Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726efd60c2e0b51d504ac",
+    "name": "SmileCraft Advanced Multi-Speciality Dental Care",
+    "providerId": "68ef7f699651fc1633887a5e",
+    "mainCategoryId": "6ad726eed60c2e0b51d50493",
+    "subCategoryId": "6ad726eed60c2e0b51d50494",
+    "ratings": {
+      "overall": 5,
+      "total": 310
+    },
+    "status": "Verified",
+    "claimed": true,
+    "isOpen": true,
+    "operatingHours": "09:00 AM - 08:00 PM",
+    "extraInfo": "Painless Laser Dentistry | Digital OPG X-Ray | Sterile Environment",
+    "media": {
+      "mainImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop&q=80",
+          "alt": "Dental Chair",
+          "_id": "6ad726efd60c2e0b51d504ad"
+        }
+      ],
+      "categories": []
+    },
+    "overview": {
+      "description": "Leading dental center specializing in painless single-sitting root canals, invisible aligners, dental implants, and cosmetic smile designs.",
+      "facilities": [],
+      "availableFor": [],
+      "occasion": [],
+      "banquetType": [],
+      "exploreCategories": [],
+      "relatedListings": [],
+      "faq": [],
+      "services": []
+    },
+    "locationDetails": {
+      "address": "Plot 30, TTK Road, Alwarpet",
+      "city": "Chennai",
+      "pincode": "600018"
+    },
+    "contactDetails": {
+      "phone": "9876543208",
+      "email": "care@smilecraftdental.com"
+    },
+    "highlights": [],
+    "reviews": {
+      "alsoListedIn": [],
+      "list": []
+    },
+    "meta": {
+      "status": "Active",
+      "verifiedListing": false,
+      "lastUpdated": "2026-10-20T08:31:43.014Z"
+    },
+    "tags": [
+      "Dental Clinic",
+      "Root Canal",
+      "Teeth Whitening",
+      "Invisalign",
+      "Alwarpet"
+    ],
+    "createdAt": "2026-10-20T08:31:43.016Z",
+    "updatedAt": "2026-10-20T08:31:43.016Z",
+    "__v": 0
+  }
+]

@@ -1,0 +1,215 @@
+[
+  {
+    "_id": "6ad726ecd60c2e0b51d50440",
+    "title": "Web & App Development",
+    "description": "Full-stack web applications, REST APIs, mobile apps, and custom SaaS engineering.",
+    "homeImage": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726ecd60c2e0b51d50441",
+        "title": "Full Stack MERN Development",
+        "description": "Custom React 19, Node.js, Express, and MongoDB responsive full stack portals.",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d50442",
+        "title": "Frontend & React.js",
+        "description": "Ultra-fast modern interfaces using Next.js, Vite, Tailwind CSS, and Redux Toolkit.",
+        "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d50443",
+        "title": "Mobile App Development",
+        "description": "Cross-platform mobile apps for Android and iOS using Flutter and React Native.",
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d50444",
+        "title": "Python & Backend APIs",
+        "description": "FastAPI, Django, database schema design, and microservices architecture.",
+        "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "faqarr": [
+      {
+        "question": "How does online milestone payment work?",
+        "answer": "Payments are held securely via Razorpay escrow until you approve the delivered milestone.",
+        "_id": "6ad726ecd60c2e0b51d50445"
+      },
+      {
+        "question": "Do freelancers provide source code?",
+        "answer": "Yes, full GitHub repository ownership and deployment instructions are provided on project completion.",
+        "_id": "6ad726ecd60c2e0b51d50446"
+      }
+    ],
+    "tagarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:40.770Z",
+    "updatedAt": "2026-10-20T08:31:40.770Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726ecd60c2e0b51d50448",
+    "title": "UI/UX & Product Design",
+    "description": "User research, wireframing, high-fidelity Figma design systems, and mobile interfaces.",
+    "homeImage": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726ecd60c2e0b51d50449",
+        "title": "Figma UI/UX Design",
+        "description": "Pixel-perfect Figma designs, responsive layouts, interactive click-through prototypes.",
+        "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d5044a",
+        "title": "Mobile App UI Design",
+        "description": "Intuitive iOS & Android app interfaces adhering to Apple Human Interface and Material 3 guidelines.",
+        "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d5044b",
+        "title": "Website Redesign & Audits",
+        "description": "Heuristic evaluation, accessibility (a11y) checks, and conversion rate optimization.",
+        "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "faqarr": [
+      {
+        "question": "What formats do I receive?",
+        "answer": "You receive editable Figma files, exported SVGs, PNG assets, and typography guides.",
+        "_id": "6ad726ecd60c2e0b51d5044c"
+      }
+    ],
+    "tagarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:40.870Z",
+    "updatedAt": "2026-10-20T08:31:40.870Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726ecd60c2e0b51d5044e",
+    "title": "Graphics & Branding",
+    "description": "Vector logos, company brand identities, 3D product renders, and social media kits.",
+    "homeImage": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726ecd60c2e0b51d5044f",
+        "title": "Logo & Brand Identity",
+        "description": "Minimalist, corporate, or 3D logos with complete brand style guides and vector files.",
+        "image": "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d50450",
+        "title": "Social Media Post Design",
+        "description": "Engaging Instagram carousels, LinkedIn banners, and promotional advertising banners.",
+        "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726ecd60c2e0b51d50451",
+        "title": "3D Product Modeling",
+        "description": "Blender 3D mockups, realistic packaging renders, and product animations.",
+        "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "tagarr": [],
+    "faqarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:40.944Z",
+    "updatedAt": "2026-10-20T08:31:40.944Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d50453",
+    "title": "Digital Marketing & SEO",
+    "description": "Google Ads, Organic SEO ranking, Social Media Growth, and Email Automation.",
+    "homeImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726edd60c2e0b51d50454",
+        "title": "Search Engine Optimization (SEO)",
+        "description": "On-page keyword strategy, technical site speed audits, and high-authority backlinks.",
+        "image": "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726edd60c2e0b51d50455",
+        "title": "Social Media Marketing",
+        "description": "Organic content calendars, audience growth, and community management on Instagram and LinkedIn.",
+        "image": "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "tagarr": [],
+    "faqarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:41.020Z",
+    "updatedAt": "2026-10-20T08:31:41.020Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d50457",
+    "title": "Video Editing & Animation",
+    "description": "High-retention YouTube editing, Instagram Reels, Motion Graphics, and 2D Explainer videos.",
+    "homeImage": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726edd60c2e0b51d50458",
+        "title": "YouTube Video Editing",
+        "description": "Fast-paced storytelling, sound design, color grading, and custom thumbnail design.",
+        "image": "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726edd60c2e0b51d50459",
+        "title": "Shorts & Reels Production",
+        "description": "Engaging viral captions, B-roll overlays, and trending sound sync for 9:16 vertical video.",
+        "image": "https://images.unsplash.com/photo-1616469829941-c7200edec809?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "tagarr": [],
+    "faqarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:41.094Z",
+    "updatedAt": "2026-10-20T08:31:41.094Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ad726edd60c2e0b51d5045b",
+    "title": "Content & Copywriting",
+    "description": "Compelling website copy, technical programming blogs, SEO articles, and product descriptions.",
+    "homeImage": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&auto=format&fit=crop&q=80",
+    "subcategories": [
+      {
+        "_id": "6ad726edd60c2e0b51d5045c",
+        "title": "Technical Writing & Docs",
+        "description": "API documentation, developer tutorials, GitHub readmes, and engineering case studies.",
+        "image": "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      },
+      {
+        "_id": "6ad726edd60c2e0b51d5045d",
+        "title": "Website Copywriting",
+        "description": "High-converting landing page headlines, value propositions, and email sales sequences.",
+        "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80",
+        "topservices": []
+      }
+    ],
+    "tagarr": [],
+    "faqarr": [],
+    "topservices": [],
+    "createdAt": "2026-10-20T08:31:41.176Z",
+    "updatedAt": "2026-10-20T08:31:41.176Z",
+    "__v": 0
+  }
+]
