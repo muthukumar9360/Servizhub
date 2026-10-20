@@ -3,7 +3,7 @@ const cors = require("cors");
 const session = require("express-session");
 const connectMongo = require("connect-mongo");
 const MongoStore = connectMongo.default || connectMongo.MongoStore || connectMongo;
-require("dotenv").config();
+require("dotenv").config({ path: require("path").resolve(__dirname, ".env") });
 const connectDB = require("./config/db");
 const Razorpay = require("razorpay");
 const http = require("http");
